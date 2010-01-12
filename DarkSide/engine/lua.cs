@@ -48,7 +48,7 @@ namespace DarkSide
     try
     {
      Assembly assembly = Assembly.LoadFrom(s);
-
+     //dfczdfcz
      Type mainClosure = assembly.GetType(scriptName + ".MainFunction");
      ConstructorInfo ctor = mainClosure.GetConstructor(new Type[] { typeof(LuaReference) });
      LuaClosure cl = (LuaClosure)ctor.Invoke(new Object[] { L.Globals });
