@@ -35,18 +35,7 @@ namespace DarkSide
   public PLATFORMER(DEVICE_PACK ip, Game game)
    : base(game)
   {
-   p = new DEVICE_PACK();
-   p.Content = ip.Content;
-   p.ps = ip.ps;
-   p.gd = ip.gd;
-   p.gdm = ip.gdm;
-   p.input = ip.input;
-   p.state = ip.state;
-   p.scale = ip.scale;
-   p.time = ip.time;
-   p.objList = new OBJECTLIST();
-   p.camera = new CAMERA();
-   p.camera.Init(p);
+   p = new DEVICE_PACK(ip);
   }
   public override void Initialize()
   {

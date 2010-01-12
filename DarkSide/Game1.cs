@@ -64,9 +64,6 @@ namespace DarkSide
    Components.Add(menu);
 
    base.Initialize();
-
-   LuaTest test = new LuaTest();
-   test.Run();
   }
   protected override void LoadContent()
   {

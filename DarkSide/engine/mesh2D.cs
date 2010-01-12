@@ -53,6 +53,10 @@ namespace DarkSide
   }
   #endregion
 
+  public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh)
+  {
+   return Init(dp, itexname, imodelname, iwh, OBJTYPE.all);
+  }
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, OBJTYPE itype)
   {
    p = dp;

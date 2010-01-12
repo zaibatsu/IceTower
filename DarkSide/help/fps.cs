@@ -5,6 +5,13 @@ using System.Text;
 
 namespace DarkSide
 {
+
+ class VASEK
+ {
+  public int vasel;
+  public VASEK() { vasel = -13;  }
+ }
+
  class FPS
  {
   float Fps = 0;

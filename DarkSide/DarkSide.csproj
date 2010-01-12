@@ -86,7 +86,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>False</Private>
     </Reference>
-    <Reference Include="XNua, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XNua, Version=0.0.1.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\XNua.dll</HintPath>
     </Reference>

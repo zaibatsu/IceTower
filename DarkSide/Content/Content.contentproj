@@ -34,11 +34,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
-    <Reference Include="XNuaCompiler, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\XNuaCompiler.dll</HintPath>
-    </Reference>
-    <Reference Include="XNuaContentImporter, Version=1.0.3663.41448, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="XNuaContentImporter, Version=1.0.3657.27730, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\XNuaContentImporter.dll</HintPath>
     </Reference>
@@ -142,15 +138,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="script.lua">
-      <Name>script</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-    </None>
     <Compile Include="ui.x">
       <Name>ui</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="init.lua">
+      <Name>init</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addMesh.lua">
+      <Name>addMesh</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

@@ -11,10 +11,10 @@ namespace DarkSide
 {
  enum OBJTYPE
  {
-  drawOnly,
-  updateOnly,
-  all,
-  none
+  drawOnly=0,
+  updateOnly=1,
+  all=2,
+  none=3
  }
  interface IUPDATABLE
  {
@@ -57,5 +57,28 @@ namespace DarkSide
   public GAMESTATE state { get; set; }
   public Vector2 scale { get; set; }
   public TIME time { get; set; }
+
+  public DEVICE_PACK() {}
+  public DEVICE_PACK(DEVICE_PACK ip)
+  {
+   Init(ip);
+  }
+  public void Init(DEVICE_PACK ip)
+  {
+   Content = ip.Content;
+   ps = ip.ps;
+   gd = ip.gd;
+   gdm = ip.gdm;
+   input = ip.input;
+   state = ip.state;
+   scale = ip.scale;
+   time = ip.time;
+   objList = new OBJECTLIST();
+   camera = new CAMERA();
+   camera.Init(this);
+  }
+
+
+
  }
 }//namespace

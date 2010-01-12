@@ -65,3 +65,5 @@ D:\IceTower\DarkSide\obj\x86\Debug\DarkSide.exe
 D:\IceTower\DarkSide\obj\x86\Debug\DarkSide.pdb
 D:\IceTower\DarkSide\bin\x86\Debug\Content\ui.xnb
 D:\IceTower\DarkSide\bin\x86\Debug\XNua.dll
+D:\IceTower\DarkSide\bin\x86\Debug\Content\init.xnb
+D:\IceTower\DarkSide\bin\x86\Debug\Content\addMesh.xnb

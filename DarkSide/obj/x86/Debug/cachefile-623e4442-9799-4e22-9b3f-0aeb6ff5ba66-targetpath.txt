@@ -14,3 +14,5 @@ Content\level.xnb
 Content\background.xnb
 Content\oops.xnb
 Content\ui.xnb
+Content\init.xnb
+Content\addMesh.xnb

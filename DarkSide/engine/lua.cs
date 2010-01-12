@@ -5,37 +5,9 @@ using System.IO;
 
 namespace DarkSide
 {
-
- // prints hello world + the parameter passed in and return 5.0
- public class SpecialHelloWorld : LuaFunction
+ class LuaTest
  {
-  public SpecialHelloWorld(LuaReference globals)
-   : base(globals)
-  {
-  }
-
-  public override int Execute(LuaState L)
-  {
-   int index = L.Stack.Base;
-   int top = L.Stack.Top - 1;
-
-   // retrieve the first parameter at index and turn it into a string
-   // add hello world and trace it
-   System.Diagnostics.Trace.Write("Hello World " + L.Stack[index].ToString() + "\n");
-   L.Stack[top] = 5.0; // a return value 
-   return 1; // number of return values (lua can have multiple return values)
-  }
- }
-
- public class LuaTest
- {
-
   private LuaState L = new LuaState();
-
-  /// <summary>
-  /// this loads all scripts (.lil files at the mo) in the path provided
-  /// </summary>
-  /// <param name="path"></param>
   private void LoadScripts(string path)
   {
    String fullPath = Path.GetFullPath(Path.GetDirectoryName(path));
@@ -48,8 +20,7 @@ namespace DarkSide
     try
     {
      Assembly assembly = Assembly.LoadFrom(s);
-     //dfczdfczasds
-     //asdas
+
      Type mainClosure = assembly.GetType(scriptName + ".MainFunction");
      ConstructorInfo ctor = mainClosure.GetConstructor(new Type[] { typeof(LuaReference) });
      LuaClosure cl = (LuaClosure)ctor.Invoke(new Object[] { L.Globals });
@@ -84,38 +55,38 @@ namespace DarkSide
    }
   }
 
-  public void Run()
+  public void LoadScript(string name)
   {
-   // we use the fact that all files in the exe directory get copied
-   // so we retrieve that and then load all the .LIL files hook them 
-   // into the lua state and viola we have a bunch of Lua functions
-   // and tables ready to go :D
-   String fullPath = ".\\Content\\";
-   LoadScripts(fullPath);
+   string path = ".\\Content\\";
+   String fullPath = Path.GetFullPath(Path.GetDirectoryName(path));
 
-   // static binding example
-   // rename .lil file to dll, add Reference to the project
-   // then access like any c# assembly
-   // then call like so
-   /*            LuaClosure co = new sieve.MainFunction(L.Globals);
-               L.Stack[L.Stack.Top++] = co;
-               co.Call(L, -1, 0);*/
+   String[] scripts = Directory.GetFiles(fullPath, "*.lil");
+   foreach (String s in scripts)
+   {
+    String scriptName = Path.GetFileNameWithoutExtension(s);
+    if (scriptName != name) continue;
 
-   // call lua print from C#
-   LuaFunction print = (LuaFunction)L.Globals["print"].O;
-   print.Call(new Object[] { "Hello World" });
+    Assembly assembly = Assembly.LoadFrom(s);
 
-   // insert our special hello world as Hello_World
-   L.Globals["Hello_World"] = new SpecialHelloWorld(L.Globals);
-
-   // set some variables in the Lua state
-   int a = (int)L.Globals["a"].ToNumber();
-
-   LuaFunction name_iq = (LuaFunction)L.Globals["PrintNameAndIQ"].O;
-   name_iq.Call(new Object[] { });
-
-   Console.Write("END");
-
+    Type mainClosure = assembly.GetType(scriptName + ".MainFunction");
+    ConstructorInfo ctor = mainClosure.GetConstructor(new Type[] { typeof(LuaReference) });
+    LuaClosure cl = (LuaClosure)ctor.Invoke(new Object[] { L.Globals });
+    L.Stack[L.Stack.Top++] = cl;
+    cl.Call(L, -1, 0);
+   }
   }
- }
-}
+
+  public void Run(DEVICE_PACK ip)
+  {
+   LoadScript("init");
+
+   DEVICE_PACK dp = (DEVICE_PACK)L.Globals["dp"].CLRObject;
+   dp.Init(ip);
+   dp.objList = ip.objList;
+
+   LoadScript("addMesh");
+   int quit = 0;
+  }
+
+ }//class
+}//namespace
