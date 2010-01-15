@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
 
 namespace DarkSide
 {
@@ -18,10 +8,10 @@ namespace DarkSide
  {
   DEVICE_PACK p;
   Effect effect = null;
-  MESH2D new_game = new MESH2D();
-  MESH2D save_load = new MESH2D();
-  MESH2D settings = new MESH2D();
-  MESH2D quit = new MESH2D();
+  MESH2D new_game = null;
+  MESH2D save_load = null;
+  MESH2D settings = null;
+  MESH2D quit = null;
 
   int butI = 0;
 
@@ -30,6 +20,9 @@ namespace DarkSide
    : base(game)
   {
    p = new DEVICE_PACK(ip);
+   p.objList = new OBJECTLIST();
+   p.camera = new CAMERA();
+   p.camera.Init(p);
   }
   public override void Initialize()
   {
@@ -37,34 +30,29 @@ namespace DarkSide
   }
   protected override void LoadContent()
   {
-   new_game.Init(p, "new_game", "ui", new Vector2(200, 100), OBJTYPE.drawOnly);
-   new_game.UIPosition = new Vector2(320, 60 + 360);
-   new_game.AnimCount = new Vector2(5, 3);
-   new_game.PlayLoop(1, 0, 1);
+   effect = p.Content.Load<Effect>("effects/sprite");
+   p.lua.Run("menuInit", p, "menup");
 
-
-   save_load.Init(p, "save_load", "ui", new Vector2(200, 100), OBJTYPE.drawOnly);
-   save_load.UIPosition = new Vector2(320, 60+240);
-   save_load.AnimCount = new Vector2(5, 3);
-
-   settings.Init(p, "settings", "ui", new Vector2(200, 100), OBJTYPE.drawOnly);
-   settings.UIPosition = new Vector2(320, 60 + 120);
-   settings.AnimCount = new Vector2(5, 3);
-
-   quit.Init(p, "quit", "ui", new Vector2(200, 100), OBJTYPE.all);
-   quit.UIPosition = new Vector2(320, 60);
-   quit.AnimCount = new Vector2(5, 3);
-
-
-   effect = p.Content.Load<Effect>("sprite");
-
-
-   LuaTest test = new LuaTest();
-   test.Run(p);
+   new_game = p.lua.getObject("new_game") as MESH2D;
+   save_load = p.lua.getObject("save_load") as MESH2D;
+   settings = p.lua.getObject("settings") as MESH2D;
+   quit = p.lua.getObject("quit") as MESH2D;
   }
   public override void Update(GameTime gameTime)
   {
    p.objList.Update(p.time.dt);
+   if (p.state.instance != GAMESTATE.ENUM.menu) return;
+
+   if (p.input.isKeyJustDown(Keys.Enter) && butI == 0)
+   {
+    p.state.instance = GAMESTATE.ENUM.newplatformer;
+    return;
+   }
+   if (p.input.isKeyJustDown(Keys.Enter) && butI == 3)
+   {
+    p.state.instance = GAMESTATE.ENUM.quit;
+    return;
+   }
 
    if (p.input.isKeyJustDown(Keys.Down))
    {
@@ -95,7 +83,7 @@ namespace DarkSide
   }
   public override void Draw(GameTime gameTime)
   {
-   if (p.state != GAMESTATE.menu) return;
+   if (p.state.instance != GAMESTATE.ENUM.menu) return;
    p.gd.Clear(Color.Black);
    effect.Parameters["viewProj"].SetValue(Matrix.CreateOrthographicOffCenter(0, 640, 0, 480, 0, 100));
 
@@ -107,7 +95,10 @@ namespace DarkSide
 
    base.Draw(gameTime);
   }
-
+  public void CallLoadContent()
+  {
+   LoadContent();
+  }
 
  }//class
 }//namespace

@@ -1,22 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Timers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
-using System.Timers;
 
 namespace DarkSide
 {
- enum ANIMTYPE
- {
-  loop,
-  once,
-  _static
- }
- class MESH2D : IDRAWABLE
+ public class MESH2D : IDRAWABLE
  {
   public OBJTYPE type { get; set; }
-  DEVICE_PACK p;
+  private DEVICE_PACK p;
 
+  #region MESH2D
   public Texture2D tex { get; set; }
   private Model model { get; set; }
 
@@ -27,8 +20,15 @@ namespace DarkSide
   public Matrix rot = new Matrix();
   private Vector4 k;
   public Vector2 wh;
+  #endregion
 
   #region ANIMATION
+  enum ANIMTYPE
+  {
+   loop,
+   once,
+   _static
+  }
   ANIMTYPE animtype = ANIMTYPE._static;
   Vector2 tuv = Vector2.Zero;
   TIMER time = new TIMER();
@@ -36,6 +36,11 @@ namespace DarkSide
   #endregion
 
   #region 2D
+  public Vector2 Multiply
+  {
+   get { return new Vector2(k.X, k.Y); }
+   set { k.X = value.X; k.Y = value.Y; }
+  }
   public Vector2 Position
   {
    get { return new Vector2(k.Z, k.W); }
@@ -53,9 +58,10 @@ namespace DarkSide
   }
   #endregion
 
-  public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh)
+  public MESH2D() { }
+  public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, string name)
   {
-   return Init(dp, itexname, imodelname, iwh, OBJTYPE.all);
+   return Init(dp, itexname, imodelname, iwh, DEVICE_PACK.typeByName(name));
   }
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, OBJTYPE itype)
   {
@@ -68,8 +74,8 @@ namespace DarkSide
 
    tex = null;
    model = null;
-   tex = dp.Content.Load<Texture2D>(texname);
-   model = dp.Content.Load<Model>(modelname);
+   tex = dp.Content.Load<Texture2D>("textures/" + texname);
+   model = dp.Content.Load<Model>("models/" + modelname);
 
    if (tex == null || model == null) return true;
    rot = Matrix.Identity;
@@ -97,11 +103,10 @@ namespace DarkSide
   }
 
 
-
   public Vector2 AnimCount
   {
    get { return animcount; }
-   set { animcount = value; AnimMul = new Vector2(1,1) / value; }
+   set { animcount = value; AnimMul = new Vector2(1, 1) / value; }
   }
   public Vector2 AnimMul
   {
@@ -125,7 +130,7 @@ namespace DarkSide
    tuv = AnimPos;
    time.Start(p, dt);
   }
-  public void PlayLoop(float dt,float ix, float iy)
+  public void PlayLoop(float dt, float ix, float iy)
   {
    animtype = ANIMTYPE.loop;
    tuv = AnimPos;
@@ -137,6 +142,7 @@ namespace DarkSide
    animtype = ANIMTYPE._static;
    AnimPos = tuv;
   }
+
 
   public void Update(float dt)
   {
@@ -152,6 +158,5 @@ namespace DarkSide
     AnimPos = new Vector2(time.getInterval(AnimCount.X), AnimPos.Y);
    }
   }
-
  }//class
 }//namespace

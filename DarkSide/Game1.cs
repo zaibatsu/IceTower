@@ -1,65 +1,72 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
-using FarseerGames.FarseerPhysics;
-using FarseerGames.FarseerPhysics.Collisions;
-using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Factories;
 
 namespace DarkSide
 {
- enum GAMESTATE
+ public class GAMESTATE
  {
-  platformer,
-  menu,
-  settings,
-  save_load,
-  intro,
-  map,
-  city,
+  public enum ENUM
+  {
+   platformer,
+   newplatformer,
+   menu,
+   settings,
+   save_load,
+   intro,
+   map,
+   city,
+   quit,
+  }
+  public GAMESTATE.ENUM instance = GAMESTATE.ENUM.menu;
  }
+
  public class Game1 : Microsoft.Xna.Framework.Game
  {
-  #region DEVICE_PACK
-  DEVICE_PACK p = new DEVICE_PACK();
-  FPS fps = new FPS();
+  #region INSTANCE
+  private static Game1 _instance = null;
+  public static Game1 Instance
+  {
+   get
+   {
+    if (_instance == null)
+    {
+     _instance = new Game1();
+    }
+    return _instance;
+   }
+  }
   #endregion
 
-  PLATFORMER platformer = null;
+  public DEVICE_PACK p = new DEVICE_PACK();
+  FPS fps = new FPS();
+
+  public PLATFORMER platformer = null;
   MENU menu = null;
 
   public Game1()
   {
+   _instance = this;
    p.gdm = new GraphicsDeviceManager(this);
    p.gdm.PreferredBackBufferWidth = 640;
    p.gdm.PreferredBackBufferHeight = 480;
-  
-   Content.RootDirectory = "Content";
 
+   Content.RootDirectory = "Content";
   }
   protected override void Initialize()
   {
    p.time = new TIME();
    p.scale = new Vector2(1, 1);
-   p.state = GAMESTATE.menu;
+   p.state = new GAMESTATE();
    p.gd = GraphicsDevice;
    p.Content = Content;
    p.camera = new CAMERA();
    p.input = new INPUT();
-   p.ps = new PhysicsSimulator(new Vector2(0,-10));
+   p.lua = new LUA();
+   p.lua.Init("init", p);
 
-   platformer = new PLATFORMER(p, this);
-   Components.Add(platformer);
    menu = new MENU(p, this);
    Components.Add(menu);
 
@@ -70,24 +77,32 @@ namespace DarkSide
    Window.Title = "DarkSide";
    IsMouseVisible = true;
 
-   GraphicsDevice.RenderState.CullMode = CullMode.None;
-   GraphicsDevice.RenderState.AlphaBlendEnable = true;
-   GraphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
-   GraphicsDevice.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
-   GraphicsDevice.RenderState.DepthBufferEnable = false;
+   p.gd.RenderState.CullMode = CullMode.None;
+   p.gd.RenderState.AlphaBlendEnable = true;
+   p.gd.RenderState.SourceBlend = Blend.SourceAlpha;
+   p.gd.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
+   p.gd.RenderState.DepthBufferEnable = false;
 
    for (int i = 0; i < 16; ++i)
    {
-    GraphicsDevice.SamplerStates[i].AddressU = TextureAddressMode.Clamp;
-    GraphicsDevice.SamplerStates[i].AddressV = TextureAddressMode.Clamp;
-    GraphicsDevice.SamplerStates[i].MagFilter = TextureFilter.Linear;
-    GraphicsDevice.SamplerStates[i].MinFilter = TextureFilter.Linear;
-    GraphicsDevice.SamplerStates[i].MipFilter = TextureFilter.Linear;
+    p.gd.SamplerStates[i].AddressU = TextureAddressMode.Clamp;
+    p.gd.SamplerStates[i].AddressV = TextureAddressMode.Clamp;
+    p.gd.SamplerStates[i].MagFilter = TextureFilter.Linear;
+    p.gd.SamplerStates[i].MinFilter = TextureFilter.Linear;
+    p.gd.SamplerStates[i].MipFilter = TextureFilter.Linear;
    }
   }
   protected override void Update(GameTime gameTime)
   {
-   if (platformer.onexit) { Exit(); return; }
+   if (p.state.instance == GAMESTATE.ENUM.quit) Exit();
+   if (p.state.instance == GAMESTATE.ENUM.newplatformer)
+   {
+    if (platformer != null) Components.Remove(platformer);
+    platformer = new PLATFORMER(p, this, "platInit1");
+    Components.Add(platformer);
+    p.state.instance = GAMESTATE.ENUM.platformer;
+   }
+
    p.time.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
    p.input.PreInput();
 
@@ -98,12 +113,51 @@ namespace DarkSide
   }
   protected override void Draw(GameTime gameTime)
   {
-   GraphicsDevice.Clear(Color.CornflowerBlue);
-
-   Window.Title = Mouse.GetState().X.ToString() + "  "  + (480-Mouse.GetState().Y).ToString();
-
+   p.gd.Clear(Color.CornflowerBlue);
    base.Draw(gameTime);
   }
+
+  #region EDITOR
+  protected void InitializeEditor(GraphicsDevice gd)
+  {
+   p.time = new TIME();
+   p.scale = new Vector2(1, 1);
+   p.state = new GAMESTATE();
+   p.gd = gd;
+   p.Content = Content;
+   p.camera = new CAMERA();
+   p.input = new INPUT();
+   p.lua = new LUA();
+   p.lua.Init("init", p);
+
+   menu = new MENU(p, this);
+   Components.Add(menu);
+
+   base.Initialize();
+  }
+  public void InitEditor(GraphicsDevice gd, IServiceProvider gs)
+  {
+   Content = new ContentManager(gs);
+   Content.RootDirectory = "Content";
+   InitializeEditor(gd);
+   LoadContent();
+
+   platformer = new PLATFORMER(p, this, "platInit2");
+   platformer.Initialize();
+   platformer.CallLoadContent();
+   Components.Add(platformer);
+   p.state.instance = GAMESTATE.ENUM.platformer;
+  }
+  public void UpdateEditor(float dt)
+  {
+   TimeSpan t1 = new TimeSpan(0, 0, 0, 0);
+   TimeSpan t2 = new TimeSpan(0, 0, 0, (int)dt, (int)((dt - (int)dt) * 1000));
+   GameTime gameTime = new GameTime(t1, t1, t1, t2);
+   Update(gameTime);
+   Draw(gameTime);
+  }
+  #endregion
+
 
  }//main
 }//namespace

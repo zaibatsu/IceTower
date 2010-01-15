@@ -64,6 +64,7 @@
       <Private>False</Private>
       <SpecificVersion>True</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
       <Private>False</Private>
       <SpecificVersion>True</SpecificVersion>
@@ -97,14 +98,8 @@
     <Compile Include="engine\objectList.cs" />
     <Compile Include="engine\rope.cs" />
     <Compile Include="engine\timer.cs" />
-    <Compile Include="game\city.cs" />
-    <Compile Include="game\home.cs" />
-    <Compile Include="game\intro.cs" />
-    <Compile Include="game\map.cs" />
     <Compile Include="game\menu.cs" />
     <Compile Include="game\platformer.cs" />
-    <Compile Include="game\save_load.cs" />
-    <Compile Include="game\settings.cs" />
     <Compile Include="help\camera.cs" />
     <Compile Include="help\device_pack.cs" />
     <Compile Include="help\fps.cs" />

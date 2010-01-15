@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 
 namespace DarkSide
 {
- class INPUT
+ public class INPUT
  {
-  public KeyboardState prevk;
-  KeyboardState nowk;
-  public MouseState prevm;
-  MouseState nowm;
+  private KeyboardState prevk;
+  private KeyboardState nowk;
+  private MouseState prevm;
+  private MouseState nowm;
 
   public bool isKeyJustDown(Keys key) { return nowk.IsKeyDown(key) && !prevk.IsKeyDown(key); }
   public bool isKeyDown(Keys key) { return nowk.IsKeyDown(key); }
@@ -27,5 +22,8 @@ namespace DarkSide
    prevk = nowk;
    prevm = nowm;
   }
- }
-}
+  public int ScrollWheelValueNow  { get{ return nowm.ScrollWheelValue; } }
+  public int ScrollWheelValuePrev { get{ return prevm.ScrollWheelValue; } }
+
+ }//class
+}//namespace

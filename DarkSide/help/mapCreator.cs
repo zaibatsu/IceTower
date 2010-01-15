@@ -1,34 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using FarseerGames.FarseerPhysics;
-using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Factories;
 using FarseerGames.FarseerPhysics.Collisions;
 
 namespace DarkSide
 {
- enum FROM
- {
-  fromLeft,
-  fromRight,
-  fromUp,
-  fromDown,
- }
-
-
  class mapCreator
  {
+  enum FROM
+  {
+   fromLeft,
+   fromRight,
+   fromUp,
+   fromDown,
+  }
+
   private uint[] data = null;
   private int width, height;
-  Vector2 f = new Vector2(0, 0);
-  FROM from = FROM.fromLeft;
-
-  List<Vertices> verts = new List<Vertices>();
+  private Vector2 f = new Vector2(0, 0);
+  private FROM from = FROM.fromLeft;
+  private List<Vertices> verts = new List<Vertices>();
 
   private bool checkAndGet(Vector2 v)
   {
@@ -80,7 +71,7 @@ namespace DarkSide
      }
    return false;
   }
-  void DeleteVerts(Vertices vi)
+  private void DeleteVerts(Vertices vi)
   {
    Vector2 v = vi[0];
    List<Vector2> temp = new List<Vector2>();
@@ -103,7 +94,7 @@ namespace DarkSide
     else { if (temp.Count == 0) break; v = temp[0]; temp.RemoveAt(0); }
    }
   }
-  int CountFree(Vector2 p)
+  private int CountFree(Vector2 p)
   {
    int free = 0;
 
@@ -119,13 +110,13 @@ namespace DarkSide
   }
 
 
-  int maxInd(int i1, int i2, int i3)
+  private int maxInd(int i1, int i2, int i3)
   {
    if (i1 == Math.Max(Math.Max(i1, i2), i3)) return 1;
    else if (i2 == Math.Max(Math.Max(i1, i2), i3)) return 2;
    else return 3;
   }
-  void NextVector(Vertices v)
+  private void NextVector(Vertices v)
   {
    Vector2 up = new Vector2(0, -1) + f;
    Vector2 down = new Vector2(0, 1) + f;
@@ -205,7 +196,7 @@ namespace DarkSide
     if (getXY(down)) { f += new Vector2(0, 1); from = FROM.fromUp; return; }
    }
   }
-  Vertices MakePolygon()
+  private Vertices MakePolygon()
   {
    Vertices v = new Vertices();
 
@@ -238,7 +229,7 @@ namespace DarkSide
     else return verts;
    }
   }
-  void simplify(Vertices v)
+  private void simplify(Vertices v)
   {
    int j = 0;
    do
@@ -255,7 +246,7 @@ namespace DarkSide
    }
    while (j + 2 != v.Count - 1);
   }
-  void Resize(ref Vertices v)
+  private void Resize(ref Vertices v)
   {
    for (int i = 0; i < v.Count; ++i)
    {

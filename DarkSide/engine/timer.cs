@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace DarkSide
+﻿namespace DarkSide
 {
- class TIME
+ public class TIME
  {
   public float dt = 0;
   public float gametime = 0;
@@ -17,11 +12,10 @@ namespace DarkSide
   }
  }
 
-
  class TIMER
  {
-  public OBJTYPE type { get; set; }
   DEVICE_PACK p;
+  public OBJTYPE type { get; set; }
   float time, startTime, endTime;
 
   public void Start(DEVICE_PACK ip, float itime)
@@ -51,7 +45,6 @@ namespace DarkSide
 
    return s / intervals;
   }
-
 
  }//class
 }//namespace

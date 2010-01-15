@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
-using FarseerGames.FarseerPhysics;
 using FarseerGames.FarseerPhysics.Dynamics;
 using FarseerGames.FarseerPhysics.Factories;
 using FarseerGames.FarseerPhysics.Collisions;
@@ -14,14 +8,14 @@ using FarseerGames.FarseerPhysics.Collisions;
 
 namespace DarkSide
 {
- class OBJECT : IPHYS2D, IOBJECT
+ public class OBJECT : IPHYS2D, IOBJECT
  {
   public OBJTYPE type { get; set; }
+  private DEVICE_PACK p = null;
   public MESH2D mesh = new MESH2D();
-  DEVICE_PACK p;
 
   #region IPHYS2D
-  public psGeomType geomType { get; set; }
+  public GEOMTYPE geomType { get; set; }
   public List<Body> body { get; set; }
   public List<Geom> geom { get; set; }
 
@@ -34,6 +28,18 @@ namespace DarkSide
   private float yradius { get; set; }
   private const int numedges = 32;
   private const float tonn = 1000;
+  public Vector2 Position
+  {
+   set
+   {
+    for (int i = 0; i < body.Count; ++i)
+    {
+     if (geomType == GEOMTYPE.verts) body[i].Position = value;
+     else body[i].Position = value;
+    }
+   }
+   get { return body[0].Position; }
+  }
 
 
   public bool debugVerts { get; set; }
@@ -43,23 +49,10 @@ namespace DarkSide
   private List<VertexPositionColor[]> vertsDraw = null;
 
 
-  public Vector2 Position
-  {
-   set
-   {
-    for (int i = 0; i < body.Count; ++i)
-    {
-     if (geomType == psGeomType.geom_verts) body[i].Position = value;
-     else body[i].Position = value;
-    }
-   }
-   get { return body[0].Position; }
-  }
-
 
   public void MakeBox(float iwidth, float iheight, float imass)
   {
-   geomType = psGeomType.geom_box;
+   geomType = GEOMTYPE.box;
    mass = imass;
    width = iwidth;
    height = iheight;
@@ -68,7 +61,7 @@ namespace DarkSide
   }
   public void MakeCircle(float iradius, float imass)
   {
-   geomType = psGeomType.geom_circle;
+   geomType = GEOMTYPE.circle;
    mass = imass;
    radius = iradius;
    body.Add(BodyFactory.Instance.CreateCircleBody(p.ps, radius, mass));
@@ -76,7 +69,7 @@ namespace DarkSide
   }
   public void MakeEllipse(float ixradius, float iyradius, float imass)
   {
-   geomType = psGeomType.geom_ellipse;
+   geomType = GEOMTYPE.ellipse;
    mass = imass;
    xradius = ixradius;
    yradius = iyradius;
@@ -86,7 +79,7 @@ namespace DarkSide
   public bool MakeVerts(float imass)
   {
    mass = imass;
-   geomType = psGeomType.geom_verts;
+   geomType = GEOMTYPE.verts;
 
    List<Vertices> temp = new List<Vertices>();
 
@@ -98,14 +91,11 @@ namespace DarkSide
    if (vertsList.Count == 0) return true;
    for (int i = 0; i < vertsList.Count; ++i)
    {
-    Vector2 min = mapCreator.minV(vertsList[i]);
-    Vector2 max = mapCreator.maxV(vertsList[i]);
-    centroid = vertsList[i].GetCentroid() * new Vector2(mesh.wh.X / (float)mesh.tex.Width, mesh.wh.Y / (float)mesh.tex.Height);
     temp.Add(new Vertices());
     for (int j = 0; j < vertsList[i].Count; ++j)
     {
-     vertsList[i][j] -= new Vector2(mesh.wh.X / 2, mesh.wh.Y / 2);
      vertsList[i][j] *= new Vector2(mesh.wh.X / (float)mesh.tex.Width, -mesh.wh.Y / (float)mesh.tex.Height);
+     vertsList[i][j] -= new Vector2(mesh.wh.X / 2, -mesh.wh.Y/2);
 
      temp[i].Add(vertsList[i][j]);
     }
@@ -126,7 +116,7 @@ namespace DarkSide
   }
   public void Deleteps()
   {
-   geomType = psGeomType.geom_none;
+   geomType = GEOMTYPE.none;
    for (int i = 0; i < body.Count; ++i)
    {
     body[i].Dispose();
@@ -156,7 +146,8 @@ namespace DarkSide
     vertsDraw.Add(temp);
     for (int j = 0; j < vertsList[i].Count; ++j)
     {
-     vertsDraw[i][j].Position = new Vector3(vertsList[i][j] + body[i].Position, 0);
+     Vector2 centroid = vertsList[i].GetCentroid();
+     vertsDraw[i][j].Position = new Vector3(vertsList[i][j], 0);
      vertsDraw[i][j].Color = Color.Black;
     }
     p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineStrip, vertsDraw[i], 0, vertsList[i].Count - 1);
@@ -167,19 +158,24 @@ namespace DarkSide
    baseEffect.CurrentTechnique.Passes[0].End();
    baseEffect.End();
   }
-  #endregion 
+
+  public void setFriction(float f) { geom[0].FrictionCoefficient = f; }
+  #endregion
 
   public OBJECT()
   {
-   geomType = psGeomType.geom_none;
+   geomType = GEOMTYPE.none;
    debugVerts = false;
   }
-
+  public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, string type)
+  {
+   return Init(dp, itexname, imodelname, iwh, DEVICE_PACK.typeByName(type));
+  }
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, OBJTYPE itype)
   {
    p = dp;
 
-   mesh.Init(p, itexname, imodelname, iwh, OBJTYPE.none );
+   mesh.Init(p, itexname, imodelname, iwh, OBJTYPE.none);
 
    #region PHYS
    if (debugVerts) baseEffect = new BasicEffect(p.gd, null);
@@ -202,5 +198,6 @@ namespace DarkSide
   {
    mesh.Draw(effect);
   }
+
  }//class
 }//namespace

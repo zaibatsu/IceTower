@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using FarseerGames.FarseerPhysics;
-using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Factories;
-using FarseerGames.FarseerPhysics.Collisions;
+﻿using Microsoft.Xna.Framework;
 
 namespace DarkSide
 {
- class CAMERA
+ public class CAMERA
  {
-  #region IDEVICE_PACK
-  public GraphicsDevice gd { get; set; }
-  public ContentManager Content { get; set; }
-  #endregion
-
+  DEVICE_PACK p = null;
   public Matrix view { get; set; }
   public Matrix proj { get; set; }
+  public Matrix viewProj()
+  {
+   return view*proj;
+  }
 
   private Vector2 pos = Vector2.Zero;
   public Vector2 Position
@@ -37,7 +27,6 @@ namespace DarkSide
    }
   }
   public float height { get; set; }
-
   public Vector3 teye { get; set; }
   public Vector3 ttarg { get; set; }
   public Vector3 tup { get; set; }
@@ -48,9 +37,9 @@ namespace DarkSide
   public CAMERA() { height = 10; eye = new Vector3(0, 0, height); targ = new Vector3(0, 0, 0); up = new Vector3(0, 1, 0); }
   public void Init(DEVICE_PACK dp)
   {
-   gd = dp.gd;
+   p = dp;
    view = Matrix.CreateLookAt(eye, targ, up);
-   proj = Matrix.CreatePerspectiveFieldOfView(3.14f / 4, gd.Viewport.Width / gd.Viewport.Height, 1, 1000);
+   proj = Matrix.CreatePerspectiveFieldOfView(3.14f / 4, p.gd.Viewport.Width / p.gd.Viewport.Height, 1, 1000);
    teye = eye;
    ttarg = targ;
    tup = up;

@@ -1,36 +1,35 @@
-﻿using FarseerGames.FarseerPhysics;
-using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Factories;
-using FarseerGames.FarseerPhysics.Collisions;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
+using FarseerGames.FarseerPhysics;
 
 namespace DarkSide
 {
- enum OBJTYPE
+ public enum OBJTYPE
  {
   drawOnly=0,
   updateOnly=1,
   all=2,
   none=3
  }
- interface IUPDATABLE
+ public interface IUPDATABLE
  {
   OBJTYPE type { get; set; }
   void Update(float dt);
  }
- interface IDRAWABLE
+ public interface IDRAWABLE
  {
   OBJTYPE type { get; set; }
   void Draw(Effect effect);
  }
- interface IOBJECT : IUPDATABLE, IDRAWABLE
+ public interface IOBJECT : IUPDATABLE, IDRAWABLE
  {
   new OBJTYPE type { get; set; }
  }
-
+ public interface IREMOVABLE
+ {
+  void Remove();
+ }
 
  interface IDEVICE_PACK
  {
@@ -44,19 +43,21 @@ namespace DarkSide
   GAMESTATE state { get; set; }
   Vector2 scale { get; set; }
   TIME time { get; set; }
+  LUA lua { get; set; }
  }
- class DEVICE_PACK : IDEVICE_PACK
+ public class DEVICE_PACK : IDEVICE_PACK
  {
   public GraphicsDevice gd { get; set; }
   public GraphicsDeviceManager gdm { get; set; }
   public ContentManager Content { get; set; }
+  public PhysicsSimulator ps { get; set; }
   public CAMERA camera { get; set; }
   public INPUT input { get; set; }
-  public PhysicsSimulator ps { get; set; }
   public OBJECTLIST objList { get; set; }
   public GAMESTATE state { get; set; }
   public Vector2 scale { get; set; }
   public TIME time { get; set; }
+  public LUA lua { get; set; }
 
   public DEVICE_PACK() {}
   public DEVICE_PACK(DEVICE_PACK ip)
@@ -73,12 +74,18 @@ namespace DarkSide
    state = ip.state;
    scale = ip.scale;
    time = ip.time;
-   objList = new OBJECTLIST();
-   camera = new CAMERA();
-   camera.Init(this);
+   lua = ip.lua;
+   time = ip.time;
+  }
+
+  public static OBJTYPE typeByName(string name)
+  {
+   if (name == "drawOnly") return OBJTYPE.drawOnly;
+   else if (name == "updateOnly") return OBJTYPE.updateOnly;
+   else if (name == "all") return OBJTYPE.all;
+   else return OBJTYPE.none;
   }
 
 
-
- }
+ }//class 
 }//namespace

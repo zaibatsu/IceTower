@@ -12,7 +12,7 @@ namespace DarkSide
  class BUTTON : IUPDATABLE
  {
   public OBJTYPE type { get; set; }
-  MESH2D mesh = new MESH2D();
+  private MESH2D mesh = new MESH2D();
   public float state { get; set; }
 
   public Vector2 Position { get; set; }

@@ -1,41 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
+using FarseerGames.FarseerPhysics;
 
 namespace DarkSide
 {
- class PLATFORMER : DrawableGameComponent
+ public class PLATFORMER : DrawableGameComponent
  {
-  DEVICE_PACK p;
+  public DEVICE_PACK p = null;
   Effect effect = null;
+  string scriptname;
 
-  PLAYER player = new PLAYER();
-  public bool onexit = false;
-
-  #region OBJECTS
-  OBJECT ground = new OBJECT();
-  MESH2D background = new MESH2D();
-  MESH2D oops = new MESH2D();
+  public PLAYER player = new PLAYER();
+  MESH2D oops = null;
+  MESH2D background = null;
 
 
-  OBJECT barrel = new OBJECT();
-  OBJECT barrel2 = new OBJECT();
-  #endregion
-
-  public PLATFORMER(DEVICE_PACK ip, Game game)
+  public PLATFORMER(DEVICE_PACK ip, Game game, string iscriptname)
    : base(game)
   {
    p = new DEVICE_PACK(ip);
+   p.ps = new PhysicsSimulator(new Vector2(0, -10));
+   p.objList = new OBJECTLIST();
+   p.camera = new CAMERA();
+   p.camera.Init(p);
+   scriptname = iscriptname;
   }
   public override void Initialize()
   {
@@ -43,43 +32,31 @@ namespace DarkSide
   }
   protected override void LoadContent()
   {
-   effect = p.Content.Load<Effect>("sprite");
+   effect = p.Content.Load<Effect>("effects/sprite");
 
-   #region OBJECTS
-   background.Init(p, "background_1", "background", new Vector2(80, 60), OBJTYPE.all);
-   background.Position = new Vector2(0, 0);
-
-   ground.debugVerts = true;
-   if (ground.Init(p, "level_1", "level", new Vector2(100, 40), OBJTYPE.all)) onexit = true;
-   if (ground.MakeVerts(1000)) onexit = true;
-   ground.geom[0].FrictionCoefficient = 0;
-
-   if (barrel.Init(p, "barrel", "level", new Vector2(2, 2), OBJTYPE.all)) onexit = true;
-   barrel.MakeCircle(1, 10);
-   barrel.Position = new Vector2(0, 0);
-   barrel.geom[0].FrictionCoefficient = 2;
-
-   if (barrel2.Init(p, "barrel", "level", new Vector2(2, 2), OBJTYPE.all)) onexit = true;
-   barrel2.MakeCircle(1, 10);
-   barrel2.Position = new Vector2(0, 6);
-   barrel2.geom[0].FrictionCoefficient = 2;
-
-
-   oops.Init(p, "oops_1", "oops", new Vector2(3, 3), OBJTYPE.updateOnly);
-   #endregion
+   p.lua.Run(scriptname, p, "platp");
+   oops = p.lua.getObject("oops") as MESH2D;
+   background = p.lua.getObject("background") as MESH2D;
 
    player.Init(p);
-   player.Position = new Vector2(3, 3);
+   player.Position = new Vector2(0, 50);
   }
   public override void Update(GameTime gameTime)
   {
-   if (p.state != GAMESTATE.platformer) return;
-   if (onexit) return;
+   if (p.state.instance != GAMESTATE.ENUM.platformer) return;
    float dt = p.time.dt;
+
+   if (p.input.isKeyJustDown(Keys.Escape))
+   {
+    p.state.instance = GAMESTATE.ENUM.menu;
+    return;
+   }
+
 
    player.Update(dt);
    p.ps.Update(dt);
    player.PostUpdate();
+   p.camera.Position = player.Position;
 
    background.Position = player.Position;
    oops.Position = player.Position + new Vector2(2, 2);
@@ -87,13 +64,11 @@ namespace DarkSide
    p.objList.Update(dt);
    p.camera.Update();
 
-   ground.Update(dt);
-
    base.Update(gameTime);
   }
   public override void Draw(GameTime gameTime)
   {
-   if (p.state != GAMESTATE.platformer) return;
+   if (p.state.instance != GAMESTATE.ENUM.platformer) return;
    effect.Parameters["viewProj"].SetValue(p.camera.view * p.camera.proj);
 
 
@@ -109,9 +84,14 @@ namespace DarkSide
    effect.End();
 
    player.contactDraw();
-   // ground.debugVertsDraw(0);
+   OBJECT ground = p.lua.getObject("ground") as OBJECT;
+   ground.debugVertsDraw(0);
 
    base.Draw(gameTime);
+  }
+  public void CallLoadContent()
+  {
+   LoadContent();
   }
 
  }//class

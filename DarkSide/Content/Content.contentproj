@@ -1,6 +1,6 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
-    <ProjectGuid>623e4442-9799-4e22-9b3f-0aeb6ff5ba66</ProjectGuid>
+    <ProjectGuid>{623E4442-9799-4E22-9B3F-0AEB6FF5BA66}</ProjectGuid>
     <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -36,34 +36,34 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
     <Reference Include="XNuaContentImporter, Version=1.0.3657.27730, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\XNuaContentImporter.dll</HintPath>
+      <HintPath>..\..\DarkSide\XNuaContentImporter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sprite.fx">
+    <Compile Include="effects\sprite.fx">
       <Name>sprite</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="player.tga">
+    <Compile Include="textures\player.tga">
       <Name>player_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="player.x">
+    <Compile Include="models\player.x">
       <Name>player</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <ProcessorParameters_ResizeTexturesToPowerOfTwo>True</ProcessorParameters_ResizeTexturesToPowerOfTwo>
     </Compile>
-    <Compile Include="level.tga">
+    <Compile Include="textures\level.tga">
       <Name>level_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="level.x">
+    <Compile Include="models\level.x">
       <Name>level</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -71,12 +71,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="background.tga">
+    <Compile Include="textures\background.tga">
       <Name>background_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <ProcessorParameters_GenerateMipmaps>True</ProcessorParameters_GenerateMipmaps>
+      <ProcessorParameters_ResizeToPowerOfTwo>True</ProcessorParameters_ResizeToPowerOfTwo>
     </Compile>
-    <Compile Include="background.x">
+    <Compile Include="models\background.x">
       <Name>background</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -84,78 +86,99 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="oops.tga">
+    <Compile Include="textures\oops.tga">
       <Name>oops_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="oops.x">
+    <Compile Include="models\oops.x">
       <Name>oops</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="barrel.tga">
+    <Compile Include="textures\barrel.tga">
       <Name>barrel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="rope.tga">
+    <Compile Include="textures\rope.tga">
       <Name>rope</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="new_game.tga">
+    <Compile Include="textures\new_game.tga">
       <Name>new_game</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_GenerateMipmaps>True</ProcessorParameters_GenerateMipmaps>
       <ProcessorParameters_ResizeToPowerOfTwo>True</ProcessorParameters_ResizeToPowerOfTwo>
     </Compile>
-    <Compile Include="quit.tga">
+    <Compile Include="textures\quit.tga">
       <Name>quit</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_GenerateMipmaps>True</ProcessorParameters_GenerateMipmaps>
       <ProcessorParameters_ResizeToPowerOfTwo>True</ProcessorParameters_ResizeToPowerOfTwo>
     </Compile>
-    <Compile Include="save_load.tga">
+    <Compile Include="textures\save_load.tga">
       <Name>save_load</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_GenerateMipmaps>True</ProcessorParameters_GenerateMipmaps>
       <ProcessorParameters_ResizeToPowerOfTwo>True</ProcessorParameters_ResizeToPowerOfTwo>
     </Compile>
-    <Compile Include="settings.tga">
+    <Compile Include="textures\settings.tga">
       <Name>settings</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ui.x">
+    <Compile Include="models\ui.x">
       <Name>ui</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="init.lua">
+    <Compile Include="scripts\init.lua">
       <Name>init</Name>
       <Importer>XNuaContentImport</Importer>
       <Processor>XNuaProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addMesh.lua">
-      <Name>addMesh</Name>
+    <Compile Include="scripts\menuInit.lua">
+      <Name>menuInit</Name>
       <Importer>XNuaContentImport</Importer>
       <Processor>XNuaProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="scripts\platInit1.lua">
+      <Name>platInit1</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="scripts\platInit2.lua">
+      <Name>platInit2</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\menu.jpg">
+      <Name>menu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
@@ -166,4 +189,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

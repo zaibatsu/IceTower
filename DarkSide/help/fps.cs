@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace DarkSide
+﻿namespace DarkSide
 {
-
- class VASEK
+ public class FPS
  {
-  public int vasel;
-  public VASEK() { vasel = -13;  }
- }
-
- class FPS
- {
-  float Fps = 0;
-  float sec = 0;
-  int count = 0;
+  private float Fps = 0;
+  private float sec = 0;
+  private int count = 0;
 
   public float fps { get { return Fps; }  }
   public void Update(float dt)
@@ -30,5 +18,6 @@ namespace DarkSide
     sec = 0;
    }
   }
- }
-}
+
+ }//class
+}//namespace

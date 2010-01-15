@@ -1,27 +1,20 @@
-﻿using System.Text;
-using System.Collections.Generic;
-using FarseerGames.FarseerPhysics;
+﻿using System.Collections.Generic;
 using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Factories;
 using FarseerGames.FarseerPhysics.Collisions;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
 namespace DarkSide
 {
- enum psGeomType
+ public enum GEOMTYPE
  {
-  geom_box,
-  geom_circle,
-  geom_ellipse,
-  geom_verts,
-  geom_none
+  box,
+  circle,
+  ellipse,
+  verts,
+  none
  }
-
  interface IPHYS2D
  {
-  psGeomType geomType { get; set; }
+  GEOMTYPE geomType { get; set; }
   List<Body> body { get; set; }
   List<Geom> geom { get; set; }
 
@@ -32,5 +25,6 @@ namespace DarkSide
   void Deleteps();
   void setStatic(bool isStatic);
   void debugVertsDraw(int index);
- }
-}
+
+ }//interface
+}//namespace

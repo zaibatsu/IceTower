@@ -1,12 +1,3 @@
-using System.Collections.Generic;
-using FarseerGames.FarseerPhysics;
-using FarseerGames.FarseerPhysics.Collisions;
-using FarseerGames.FarseerPhysics.Dynamics;
-using FarseerGames.FarseerPhysics.Dynamics.Springs;
-using FarseerGames.FarseerPhysics.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace DarkSide
 {
  /*

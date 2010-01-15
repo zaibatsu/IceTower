@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace DarkSide
 {
- class OBJECTLIST
+ public class OBJECTLIST
  {
   private List<IOBJECT> objList = new List<IOBJECT>();
   private List<IDRAWABLE> drawList = new List<IDRAWABLE>();
@@ -43,7 +40,6 @@ namespace DarkSide
     if (obj.type == OBJTYPE.all || obj.type == OBJTYPE.drawOnly) obj.Draw(effect);
    }
   }
-
 
  }//class
 }//namespace
