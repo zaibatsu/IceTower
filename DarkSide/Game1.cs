@@ -135,14 +135,14 @@ namespace DarkSide
 
    base.Initialize();
   }
-  public void InitEditor(GraphicsDevice gd, IServiceProvider gs)
+  public void InitEditor(GraphicsDevice gd, IServiceProvider gs, string platname)
   {
    Content = new ContentManager(gs);
    Content.RootDirectory = "Content";
    InitializeEditor(gd);
    LoadContent();
 
-   platformer = new PLATFORMER(p, this, "platInit2");
+   platformer = new PLATFORMER(p, this, platname);
    platformer.Initialize();
    platformer.CallLoadContent();
    Components.Add(platformer);

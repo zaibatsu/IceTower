@@ -42,3 +42,10 @@ barrel3:setFriction(2)
 wh = Vector2(3, 3)
 oops = MESH2D()
 oops:Init(p, "oops_1", "oops", wh, "updateOnly")
+
+
+
+player = PLAYER()
+player:Init(p)
+pos = Vector2(0,50)
+player.Position = pos

@@ -11,9 +11,9 @@ namespace DarkSide
   Effect effect = null;
   string scriptname;
 
-  public PLAYER player = new PLAYER();
   MESH2D oops = null;
   MESH2D background = null;
+  public PLAYER player = null;
 
 
   public PLATFORMER(DEVICE_PACK ip, Game game, string iscriptname)
@@ -38,8 +38,7 @@ namespace DarkSide
    oops = p.lua.getObject("oops") as MESH2D;
    background = p.lua.getObject("background") as MESH2D;
 
-   player.Init(p);
-   player.Position = new Vector2(0, 50);
+   player = p.lua.getObject("player") as PLAYER;
   }
   public override void Update(GameTime gameTime)
   {
