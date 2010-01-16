@@ -34,5 +34,6 @@ D:\IceTower\platEditor\platEditor\bin\Debug\Content\scripts\menuInit.xnb
 D:\IceTower\platEditor\platEditor\bin\Debug\Content\scripts\platInit1.xnb
 D:\IceTower\platEditor\platEditor\bin\Debug\Content\scripts\platInit2.xnb
 D:\IceTower\platEditor\platEditor\obj\Debug\platEditor.InitForm.resources
-D:\IceTower\platEditor\platEditor\bin\Debug\XnaDevRu.Assets.dll
-D:\IceTower\platEditor\platEditor\bin\Debug\XnaDevRu.Assets.pdb
+D:\IceTower\platEditor\platEditor\bin\Debug\XnaDevRu.ContentBuilder.Framework.dll
+D:\IceTower\platEditor\platEditor\bin\Debug\XnaDevRu.ContentBuilder.Framework.pdb
+D:\IceTower\platEditor\platEditor\bin\Debug\platEditor.exe.config
