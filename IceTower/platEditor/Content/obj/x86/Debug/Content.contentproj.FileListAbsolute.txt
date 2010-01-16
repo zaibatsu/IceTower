@@ -1,0 +1,2 @@
+D:\IceTower\DarkSide\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\IceTower\platEditor\Content\obj\x86\Debug\ResolveAssemblyReference.cache
