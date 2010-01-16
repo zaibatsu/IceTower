@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="XnaDevRu.ContentBuilder.Framework, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\XnaDevRu.ContentBuilder.Framework.dll</HintPath>
+      <HintPath>..\..\XCB_Source\XnaDevRu.ContentBuilder.Framework\bin\Debug\XnaDevRu.ContentBuilder.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
