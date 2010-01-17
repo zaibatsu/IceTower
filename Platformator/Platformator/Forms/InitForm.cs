@@ -140,7 +140,7 @@ namespace Platformator
     progressBar1.Value += 2;
     button1.Text = "OK ;)";
    }
-   progressBar1.Value += 10;
+   progressBar1.Value = progressBar1.Maximum;
    GameControl.Instance.InitEditor(Path.GetFileNameWithoutExtension(textBox1.Text));
    this.Hide();
   }

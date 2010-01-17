@@ -1,1 +1,1 @@
-xcopy /E /Y /Q "D:/IceTower/platEditor/Content/bin/x86/Debug"  "D:/IceTower/platEditor/platEditor/bin/Debug"
+xcopy /E /Y /Q "D:/IceTower/Platformator/Content/bin/x86/Debug"  "D:/IceTower/Platformator/Platformator/bin/Debug"
