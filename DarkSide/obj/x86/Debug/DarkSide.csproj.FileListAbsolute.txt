@@ -70,3 +70,4 @@ D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\menuInit.xnb
 D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\platInit1.xnb
 D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\platInit2.xnb
 D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\menu.xnb
+D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\ball.xnb

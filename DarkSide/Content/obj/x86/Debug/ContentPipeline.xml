@@ -224,7 +224,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\platInit1.xnb</Output>
-      <Time>2010-01-17T00:51:18.421875+03:00</Time>
+      <Time>2010-01-17T20:52:11.734375+03:00</Time>
     </Item>
     <Item>
       <Source>scripts\platInit2.lua</Source>
@@ -269,6 +269,15 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\ui_0.xml</Output>
       <Time>2010-01-11T15:02:27.234375+03:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\ball.bmp</Source>
+      <Name>textures\ball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\ball.xnb</Output>
+      <Time>2010-01-17T20:39:20.75+03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
