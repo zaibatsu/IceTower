@@ -8,7 +8,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\effects\sprite.xnb</Output>
-      <Time>2010-01-13T19:11:17.6875+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
     </Item>
     <Item>
       <Source>textures\player.tga</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\player_1.xnb</Output>
-      <Time>2010-01-10T20:30:26.515625+03:00</Time>
+      <Time>2010-01-17T16:11:13.078125+03:00</Time>
     </Item>
     <Item>
       <Source>textures\level.tga</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\level_1.xnb</Output>
-      <Time>2010-01-13T20:31:24.78125+03:00</Time>
+      <Time>2010-01-17T16:11:12.96875+03:00</Time>
     </Item>
     <Item>
       <Source>textures\background.tga</Source>
@@ -39,7 +39,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\background_1.xnb</Output>
-      <Time>2010-01-08T20:56:57.484375+03:00</Time>
+      <Time>2010-01-17T16:11:12.953125+03:00</Time>
     </Item>
     <Item>
       <Source>textures\oops.tga</Source>
@@ -48,7 +48,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\oops_1.xnb</Output>
-      <Time>2010-01-10T02:22:35.640625+03:00</Time>
+      <Time>2010-01-17T16:11:13.015625+03:00</Time>
     </Item>
     <Item>
       <Source>textures\barrel.tga</Source>
@@ -57,7 +57,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\barrel.xnb</Output>
-      <Time>2010-01-09T16:28:02.703125+03:00</Time>
+      <Time>2010-01-17T16:11:12.953125+03:00</Time>
     </Item>
     <Item>
       <Source>textures\rope.tga</Source>
@@ -66,7 +66,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\rope.xnb</Output>
-      <Time>2010-01-09T18:21:21.921875+03:00</Time>
+      <Time>2010-01-17T16:11:13.109375+03:00</Time>
     </Item>
     <Item>
       <Source>textures\new_game.tga</Source>
@@ -79,7 +79,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\new_game.xnb</Output>
-      <Time>2010-01-11T18:34:19.984375+03:00</Time>
+      <Time>2010-01-17T16:11:13.015625+03:00</Time>
     </Item>
     <Item>
       <Source>textures\quit.tga</Source>
@@ -92,7 +92,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\quit.xnb</Output>
-      <Time>2010-01-11T18:58:21.484375+03:00</Time>
+      <Time>2010-01-17T16:11:13.109375+03:00</Time>
     </Item>
     <Item>
       <Source>textures\save_load.tga</Source>
@@ -105,7 +105,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\save_load.xnb</Output>
-      <Time>2010-01-11T18:58:46.90625+03:00</Time>
+      <Time>2010-01-17T16:11:13.140625+03:00</Time>
     </Item>
     <Item>
       <Source>textures\settings.tga</Source>
@@ -114,7 +114,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\settings.xnb</Output>
-      <Time>2010-01-11T18:58:53.5+03:00</Time>
+      <Time>2010-01-17T16:11:13.1875+03:00</Time>
     </Item>
     <Item>
       <Source>textures\menu.jpg</Source>
@@ -123,7 +123,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\menu.xnb</Output>
-      <Time>2010-01-13T19:26:37.78125+03:00</Time>
+      <Time>2010-01-17T16:11:12.984375+03:00</Time>
     </Item>
     <Item>
       <Source>models\player.x</Source>
@@ -135,10 +135,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\models\player.xnb</Output>
-      <Time>2010-01-13T19:45:51.71875+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\player_0.xml</Key>
-        <Value>2010-01-14T17:11:06.421875+03:00</Value>
+        <Value>2010-01-17T16:35:53.03125+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -151,10 +151,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\models\level.xnb</Output>
-      <Time>2010-01-08T22:35:58.375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\level_0.xml</Key>
-        <Value>2010-01-14T17:11:06.53125+03:00</Value>
+        <Value>2010-01-17T16:35:54.4375+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -167,10 +167,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\models\background.xnb</Output>
-      <Time>2010-01-13T19:45:34.046875+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\background_0.xml</Key>
-        <Value>2010-01-14T17:11:06.625+03:00</Value>
+        <Value>2010-01-17T16:35:55.515625+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -180,10 +180,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\models\oops.xnb</Output>
-      <Time>2010-01-08T22:35:58.375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\oops_0.xml</Key>
-        <Value>2010-01-14T17:11:06.734375+03:00</Value>
+        <Value>2010-01-17T16:35:56.515625+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -193,10 +193,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\models\ui.xnb</Output>
-      <Time>2010-01-11T15:02:27.234375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\ui_0.xml</Key>
-        <Value>2010-01-14T17:11:06.828125+03:00</Value>
+        <Value>2010-01-17T16:35:57.515625+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -206,7 +206,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\init.xnb</Output>
-      <Time>2010-01-17T00:51:15.390625+03:00</Time>
+      <Time>2010-01-17T16:11:12.921875+03:00</Time>
     </Item>
     <Item>
       <Source>scripts\menuInit.lua</Source>
@@ -215,7 +215,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\menuInit.xnb</Output>
-      <Time>2010-01-14T22:43:12.078125+03:00</Time>
+      <Time>2010-01-17T16:11:12.921875+03:00</Time>
     </Item>
     <Item>
       <Source>scripts\platInit1.lua</Source>
@@ -224,7 +224,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\platInit1.xnb</Output>
-      <Time>2010-01-17T00:51:18.421875+03:00</Time>
+      <Time>2010-01-17T19:11:03.984375+03:00</Time>
     </Item>
     <Item>
       <Source>scripts\platInit2.lua</Source>
@@ -233,42 +233,51 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\scripts\platInit2.xnb</Output>
-      <Time>2010-01-17T00:50:56.21875+03:00</Time>
+      <Time>2010-01-17T19:11:03.90625+03:00</Time>
     </Item>
     <Item>
       <Source>models\player.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\player_0.xml</Output>
-      <Time>2010-01-13T19:45:51.71875+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
     </Item>
     <Item>
       <Source>models\level.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\level_0.xml</Output>
-      <Time>2010-01-08T22:35:58.375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
     </Item>
     <Item>
       <Source>models\background.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\background_0.xml</Output>
-      <Time>2010-01-13T19:45:34.046875+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
     </Item>
     <Item>
       <Source>models\oops.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\oops_0.xml</Output>
-      <Time>2010-01-08T22:35:58.375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
     </Item>
     <Item>
       <Source>models\ui.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\models\ui_0.xml</Output>
-      <Time>2010-01-11T15:02:27.234375+03:00</Time>
+      <Time>2010-01-17T16:11:12.828125+03:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\ball.bmp</Source>
+      <Name>textures\ball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\IceTower\DarkSide\bin\x86\Debug\Content\textures\ball.xnb</Output>
+      <Time>2010-01-17T18:10:57.8125+03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -283,11 +292,11 @@
     <Assemblies>
       <Assembly>
         <Key>D:\IceTower\DarkSide\XNuaContentImporter.dll</Key>
-        <Value>2010-01-06T07:09:36+03:00</Value>
+        <Value>2010-01-17T16:11:13.25+03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Game\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Game.dll</Key>
-        <Value>2010-01-13T17:07:09.046875+03:00</Value>
+        <Value>2010-01-12T17:34:08.828125+03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
@@ -315,7 +324,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-01-13T17:09:20.328125+03:00</Value>
+        <Value>2010-01-12T17:47:58.671875+03:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

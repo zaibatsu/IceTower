@@ -38,6 +38,18 @@ barrel3:MakeCircle(1, 10)
 barrel3.Position = Vector2(0, 12)
 barrel3:setFriction(2)
 
+wh = Vector2(4, 4)
+barrel5 = OBJECT()
+barrel5:Init(p, "barrel", "level", wh, "all")
+barrel5:MakeCircle(1, 10)
+barrel5.Position = Vector2(0, 8)
+barrel5:setFriction(2)
+
+
+
+
+
+
 
 wh = Vector2(3, 3)
 oops = MESH2D()
