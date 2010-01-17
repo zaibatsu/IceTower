@@ -5,3 +5,10 @@ C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Pro
 C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.exe
 C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.pdb
 C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\ball.xnb
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\ball.xnb
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\bin\x86\Debug\WindowsGame2.exe
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\bin\x86\Debug\WindowsGame2.pdb
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.exe
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.pdb

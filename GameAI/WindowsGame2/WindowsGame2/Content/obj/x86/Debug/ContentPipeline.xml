@@ -7,18 +7,18 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\ball.xnb</Output>
-      <Time>2010-01-16T17:40:58.28125+03:00</Time>
+      <Output>D:\IceTower\GameAI\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\ball.xnb</Output>
+      <Time>2010-01-17T16:26:21.125+03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\IceTower\GameAI\WindowsGame2\WindowsGame2\Content\</RootDirectory>
+      <LoggerRootDirectory>D:\IceTower\GameAI\WindowsGame2\WindowsGame2\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\IceTower\GameAI\WindowsGame2\WindowsGame2\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\IceTower\GameAI\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -47,7 +47,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-01-12T17:47:58.671875+03:00</Value>
+        <Value>2010-01-13T17:09:20.328125+03:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

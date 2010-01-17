@@ -1,1 +1,2 @@
 C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\IceTower\GameAI\WindowsGame2\WindowsGame2\Content\obj\x86\Debug\ResolveAssemblyReference.cache

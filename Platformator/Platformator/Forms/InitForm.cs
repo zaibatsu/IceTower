@@ -110,16 +110,33 @@ namespace Platformator
     FileStream file = saveFileDialog1.OpenFile() as FileStream;
     StreamWriter sw = new StreamWriter(file);
     sw.WriteLine("p=platp");
+
+
     sw.WriteLine("\n\nwh = Vector2(80, 60)");
     sw.WriteLine("background = MESH2D()");
-
-    sw.WriteLine("background:Init(p,\"" + Path.GetFileNameWithoutExtension(textBox2.Text) + "\", \"background\", wh, \"all\")");
+    sw.WriteLine("background:Init(p, \"background_1\", \"background\", wh, \"all\")");
     sw.WriteLine("background.Position = Vector2(0, 0)");
 
+
+    sw.WriteLine("\n\nwh = Vector2(100, 40)");
+    sw.WriteLine("ground = OBJECT()");
+    sw.WriteLine("ground.debugVerts = true");
+    sw.WriteLine("ground:Init(p,\"" + Path.GetFileNameWithoutExtension(textBox2.Text) + "\", \"background\", wh, \"all\")");
+    sw.WriteLine("ground:MakeVerts(1000)");
+    sw.WriteLine("ground:setFriction(0)");
+
+
     sw.WriteLine("\n\nplayer = PLAYER()");
-    sw.WriteLine("pos = Vector2(0,50)");
+    sw.WriteLine("pos = Vector2(0,10)");
     sw.WriteLine("player:Init(p)");
     sw.WriteLine("player.Position = pos");
+
+
+    sw.WriteLine("\n\nwh = Vector2(3, 3)");
+    sw.WriteLine("oops = MESH2D()");
+    sw.WriteLine("oops:Init(p, \"oops_1\", \"oops\", wh, \"updateOnly\")");
+
+
     sw.Close();
     file.Close();
 
@@ -139,6 +156,17 @@ namespace Platformator
     }
     progressBar1.Value += 2;
     button1.Text = "OK ;)";
+   }
+   if (listBox1.Text == "add lua script")
+   {
+    progressBar1.Value += 4;
+    button1.Text = "Compiling texture...";
+    if (ContentFactory.Instance.Build(textBox1.Text) == false)
+    {
+     MessageBox.Show("Error script content building.");
+     return;
+    }
+    progressBar1.Value += 4;
    }
    progressBar1.Value = progressBar1.Maximum;
    GameControl.Instance.InitEditor(Path.GetFileNameWithoutExtension(textBox1.Text));

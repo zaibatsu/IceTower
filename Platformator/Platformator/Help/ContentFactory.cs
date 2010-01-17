@@ -24,17 +24,16 @@ namespace Platformator
   }
 
   private ContentProject _project = new ContentProject();
+  string prepath = "";
 
   ContentFactory()
   {
    _instance = this;
   }
-  public void Clear()
-  {
-   _project.ContentFiles.Clear();
-  }
   public bool Build(string fileName)
   {
+   if(prepath!="") File.Move(prepath, prepath + "TEMP");
+
    string exepath = System.Windows.Forms.Application.StartupPath;
    _project = new ContentProject();
 
@@ -61,8 +60,14 @@ namespace Platformator
    }
 
 
+
    _project.InitContentFile(fileName);
    bool ret = _project.Build(false);
+
+
+   if (prepath != "") File.Move(prepath + "TEMP", prepath);
+   prepath = _project.ProjectOptions.OutputDirectory + "/" +Path.GetFileNameWithoutExtension(fileName) + ".xnb";
+
 
    if(ext == ".lua")
    {
@@ -76,8 +81,7 @@ namespace Platformator
     File.Delete(outpdbfile);
     File.Move(pdbfile, exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".pdb");
    }
-
-   Clear();
+ 
    return ret;
   }
 
