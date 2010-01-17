@@ -1,0 +1,7 @@
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\WindowsGame2.exe
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\WindowsGame2.pdb
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.exe
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\obj\x86\Debug\WindowsGame2.pdb
+C:\Documents and Settings\Pixel\Мои документы\Visual Studio 2005\Projects\WindowsGame2\WindowsGame2\bin\x86\Debug\Content\ball.xnb
