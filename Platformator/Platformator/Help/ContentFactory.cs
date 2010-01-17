@@ -31,16 +31,13 @@ namespace Platformator
   }
   public void Clear()
   {
-   return;
-//    while (_project.ContentFiles.Count!=0)
-//    {
-//     _project.ContentFiles.Remove(_project.ContentFiles[0]);
-//    }
+   _project.ContentFiles.Clear();
   }
   public bool Build(string fileName)
   {
    string exepath = System.Windows.Forms.Application.StartupPath;
-   ContentFactory.Instance.Clear();
+   _project = new ContentProject();
+
    string ext = Path.GetExtension(fileName).ToLower();
    _project.ProjectOptions.RootDirectory = Path.GetFullPath(fileName).Replace(Path.GetFileName(fileName), "");
    switch (ext)
@@ -63,6 +60,7 @@ namespace Platformator
      break;
    }
 
+
    _project.InitContentFile(fileName);
    bool ret = _project.Build(false);
 
@@ -79,6 +77,7 @@ namespace Platformator
     File.Move(pdbfile, exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".pdb");
    }
 
+   Clear();
    return ret;
   }
 
