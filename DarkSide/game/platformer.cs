@@ -55,10 +55,10 @@ namespace DarkSide
    player.Update(dt);
    p.ps.Update(dt);
    player.PostUpdate();
-   p.camera.Position = player.Position;
 
    background.Position = player.Position;
    oops.Position = player.Position + new Vector2(2, 2);
+   p.camera.Position = player.Position;
 
    p.objList.Update(dt);
    p.camera.Update();
