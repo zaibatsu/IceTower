@@ -10,6 +10,7 @@ Content\textures\quit.xnb
 Content\textures\save_load.xnb
 Content\textures\settings.xnb
 Content\textures\menu.xnb
+Content\textures\ball.xnb
 Content\models\player.xnb
 Content\models\level.xnb
 Content\models\background.xnb
@@ -19,4 +20,3 @@ Content\scripts\init.xnb
 Content\scripts\menuInit.xnb
 Content\scripts\platInit1.xnb
 Content\scripts\platInit2.xnb
-Content\textures\ball.xnb

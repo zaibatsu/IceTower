@@ -8,163 +8,165 @@ using FarseerGames.FarseerPhysics.Collisions;
 
 namespace DarkSide
 {
- public class OBJECT : IPHYS2D, IOBJECT
+ public class OBJECT : IOBJECT
  {
-  public OBJTYPE type { get; set; }
   private DEVICE_PACK p = null;
+
+  public OBJTYPE type { get; set; }
   public MESH2D mesh = new MESH2D();
-
-  #region IPHYS2D
   public GEOMTYPE geomType { get; set; }
-  public List<Body> body { get; set; }
-  public List<Geom> geom { get; set; }
+  public List<OBJ_DESC> objDesc = new List<OBJ_DESC>();
+  public string name = "name string";
 
-  private Vector2 centroid;
-  private float mass { get; set; }
-  private float width { get; set; }
-  private float height { get; set; }
-  private float radius { get; set; }
-  private float xradius { get; set; }
-  private float yradius { get; set; }
-  private const int numedges = 32;
-  private const float tonn = 1000;
   public Vector2 Position
   {
    set
    {
-    for (int i = 0; i < body.Count; ++i)
+    foreach (OBJ_DESC obj in objDesc)
     {
-     if (geomType == GEOMTYPE.verts) body[i].Position = value;
-     else body[i].Position = value;
+     obj.Position = value;
     }
    }
-   get { return body[0].Position; }
+   get { return objDesc[0].Position; }
   }
-
 
   public bool debugVerts { get; set; }
-  public List<Vertices> vertsList { get; set; }
-
-  public BasicEffect baseEffect;
-  private List<VertexPositionColor[]> vertsDraw = null;
+  public BasicEffect baseEffect = null;
 
 
-
-  public void MakeBox(float iwidth, float iheight, float imass)
+  public void makeBox(float iwidth, float iheight, float imass)
   {
-   geomType = GEOMTYPE.box;
-   mass = imass;
-   width = iwidth;
-   height = iheight;
-   body.Add(BodyFactory.Instance.CreateRectangleBody(p.ps, width, height, mass));
-   geom.Add(GeomFactory.Instance.CreateRectangleGeom(p.ps, body[0], width, height));
+   if (geomType != GEOMTYPE.multigeom) geomType = GEOMTYPE.box;
+   OBJ_DESC obj = new OBJ_DESC(p);
+   if (objDesc.Count != 0 && geomType == GEOMTYPE.multigeom) { obj.globalGeomType = GEOMTYPE.multigeom; obj.body = objDesc[0].body; }
+   obj.makeBox(iwidth, iheight, imass);
+   objDesc.Add(obj);
   }
-  public void MakeCircle(float iradius, float imass)
+  public void makeCircle(float iradius, float imass)
   {
-   geomType = GEOMTYPE.circle;
-   mass = imass;
-   radius = iradius;
-   body.Add(BodyFactory.Instance.CreateCircleBody(p.ps, radius, mass));
-   geom.Add(GeomFactory.Instance.CreateCircleGeom(p.ps, body[0], radius, numedges));
+   if (geomType != GEOMTYPE.multigeom) geomType = GEOMTYPE.circle;
+   OBJ_DESC obj = new OBJ_DESC(p);
+   if (objDesc.Count != 0 && geomType == GEOMTYPE.multigeom) { obj.globalGeomType = GEOMTYPE.multigeom; obj.body = objDesc[0].body; }
+   obj.makeCircle(iradius, imass);
+   objDesc.Add(obj);
   }
-  public void MakeEllipse(float ixradius, float iyradius, float imass)
+  public void makeEllipse(float ixradius, float iyradius, float imass)
   {
-   geomType = GEOMTYPE.ellipse;
-   mass = imass;
-   xradius = ixradius;
-   yradius = iyradius;
-   body.Add(BodyFactory.Instance.CreateEllipseBody(p.ps, xradius, yradius, mass));
-   geom.Add(GeomFactory.Instance.CreateEllipseGeom(p.ps, body[0], xradius, yradius, numedges));
+   if (geomType != GEOMTYPE.multigeom) geomType = GEOMTYPE.ellipse;
+   OBJ_DESC obj = new OBJ_DESC(p);
+   if (objDesc.Count != 0 && geomType == GEOMTYPE.multigeom) { obj.globalGeomType = GEOMTYPE.multigeom; obj.body = objDesc[0].body; }
+   obj.makeEllipse(ixradius, iyradius, imass);
+   objDesc.Add(obj);
   }
-  public bool MakeVerts(float imass)
+  public bool makeVerts(string texname, Vector2 wh)
   {
-   mass = imass;
-   geomType = GEOMTYPE.verts;
+   if (geomType != GEOMTYPE.multigeom) geomType = GEOMTYPE.verts;
 
-   List<Vertices> temp = new List<Vertices>();
 
-   uint[] data = new uint[mesh.tex.Width * mesh.tex.Height];
-   mesh.tex.GetData(data);
+   Texture2D tex = p.Content.Load<Texture2D>("textures/" + texname);
+   if (tex == null) return false;
+   uint[] data = new uint[tex.Width * tex.Height];
+   tex.GetData(data);
    mapCreator map = new mapCreator();
-   vertsList = map.getMap(data, mesh.tex.Width, mesh.tex.Height);
-
+   List<Vertices> vertsList = map.getMap(data, tex.Width, tex.Height);
    if (vertsList.Count == 0) return true;
+
+
+
    for (int i = 0; i < vertsList.Count; ++i)
    {
-    temp.Add(new Vertices());
+    OBJ_DESC obj = new OBJ_DESC(p);
+    obj.makeVerts(wh, tex);
+
+
+    obj.verts = new Vertices();
     for (int j = 0; j < vertsList[i].Count; ++j)
     {
-     vertsList[i][j] *= new Vector2(mesh.wh.X / (float)mesh.tex.Width, -mesh.wh.Y / (float)mesh.tex.Height);
-     vertsList[i][j] -= new Vector2(mesh.wh.X / 2, -mesh.wh.Y/2);
+     vertsList[i][j] *= new Vector2(wh.X / (float)mesh.tex.Width, -wh.Y / (float)mesh.tex.Height);
+     vertsList[i][j] -= new Vector2(wh.X / 2, -wh.Y / 2);
 
-     temp[i].Add(vertsList[i][j]);
+     obj.verts.Add(vertsList[i][j]);
     }
+    obj.verts.Add(obj.verts[0]);
 
-    centroid = vertsList[i].GetCentroid();
-    Body bodyT = BodyFactory.Instance.CreatePolygonBody(p.ps, vertsList[i], tonn);
-    bodyT.IsStatic = true;
-    Geom geomT = GeomFactory.Instance.CreatePolygonGeom(p.ps, bodyT, vertsList[i], centroid, 0, 0.5f);
-    bodyT.Position = Vector2.Zero;
-    centroid = Vector2.Zero;
 
-    body.Add(bodyT);
-    geom.Add(geomT);
+
+    Vector2 centroid = vertsList[i].GetCentroid();
+
+    //obj.body = BodyFactory.Instance.CreatePolygonBody(p.ps, vertsList[i], OBJ_DESC.tonn);
+    if (objDesc.Count != 0 && geomType == GEOMTYPE.multigeom) { obj.globalGeomType = GEOMTYPE.multigeom; obj.body = objDesc[0].body; }
+    else obj.body = BodyFactory.Instance.CreatePolygonBody(p.ps, vertsList[i], OBJ_DESC.tonn);
+
+    obj.body.IsStatic = true;
+    obj.geom = GeomFactory.Instance.CreatePolygonGeom(p.ps, obj.body, vertsList[i], centroid, 0, 0.5f);
+    obj.body.Position = Vector2.Zero;
+
+
+
+    objDesc.Add(obj);
    }
-   vertsList = temp;
 
    return false;
   }
-  public void Deleteps()
+  public void Delete()
   {
+   if (objDesc.Count == 0)  return;
    geomType = GEOMTYPE.none;
-   for (int i = 0; i < body.Count; ++i)
+   foreach (OBJ_DESC obj in objDesc)
    {
-    body[i].Dispose();
-    geom[i].Dispose();
+    obj.body.Dispose();
+    obj.geom.Dispose();
    }
+   objDesc.Clear();
+   p.objList.Remove(this);
   }
   public void setStatic(bool b)
   {
-   for (int i = 0; i < body.Count; ++i) body[i].IsStatic = b;
+   foreach (OBJ_DESC obj in objDesc) obj.body.IsStatic = b;
   }
+  public void setFriction(float f)
+  {
+   foreach (OBJ_DESC obj in objDesc) obj.geom.FrictionCoefficient = f;
+  }
+
+
   public void debugVertsDraw(int index)
   {
+   if (!debugVerts) return;
+
+   p.gd.VertexDeclaration = new VertexDeclaration(p.gd, VertexPositionColor.VertexElements);
+   p.gd.RenderState.PointSize = 4;
    baseEffect.Projection = p.camera.proj;
    baseEffect.View = p.camera.view;
-   baseEffect.World = Matrix.CreateRotationZ(body[0].Rotation);
    baseEffect.VertexColorEnabled = true;
    baseEffect.LightingEnabled = false;
    baseEffect.Begin();
    baseEffect.CurrentTechnique.Passes[0].Begin();
 
-   p.gd.VertexDeclaration = new VertexDeclaration(p.gd, VertexPositionColor.VertexElements);
-
-   vertsDraw.Clear();
-   for (int i = 0; i < vertsList.Count; ++i)
+   foreach (OBJ_DESC obj in objDesc)
    {
-    VertexPositionColor[] temp = new VertexPositionColor[vertsList[i].Count];
-    vertsDraw.Add(temp);
-    for (int j = 0; j < vertsList[i].Count; ++j)
+    if (obj.geomType != GEOMTYPE.verts) continue;
+    baseEffect.World = Matrix.CreateRotationZ(obj.body.Rotation);
+    baseEffect.CommitChanges();
+
+    VertexPositionColor[] vertsDraw = new VertexPositionColor[obj.verts.Count];
+    for (int j = 0; j < obj.verts.Count; ++j)
     {
-     Vector2 centroid = vertsList[i].GetCentroid();
-     vertsDraw[i][j].Position = new Vector3(vertsList[i][j], 0);
-     vertsDraw[i][j].Color = Color.Black;
+     Vector2 centroid = obj.verts.GetCentroid();
+     vertsDraw[j].Position = new Vector3(obj.verts[j], 0);
+     vertsDraw[j].Color = Color.Black;
     }
-    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineStrip, vertsDraw[i], 0, vertsList[i].Count - 1);
-    p.gd.RenderState.PointSize = 4;
-    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.PointList, vertsDraw[i], 0, vertsList[i].Count);
+    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineStrip, vertsDraw, 0, obj.verts.Count - 1);
+    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.PointList, vertsDraw, 0, obj.verts.Count);
    }
 
    baseEffect.CurrentTechnique.Passes[0].End();
    baseEffect.End();
   }
 
-  public void setFriction(float f) { geom[0].FrictionCoefficient = f; }
-  #endregion
 
   public OBJECT()
   {
-   geomType = GEOMTYPE.none;
    debugVerts = false;
   }
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, string type)
@@ -174,16 +176,8 @@ namespace DarkSide
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, OBJTYPE itype)
   {
    p = dp;
-
    mesh.Init(p, itexname, imodelname, iwh, OBJTYPE.none);
-
-   #region PHYS
    if (debugVerts) baseEffect = new BasicEffect(p.gd, null);
-   body = new List<Body>();
-   geom = new List<Geom>();
-   vertsDraw = new List<VertexPositionColor[]>();
-   #endregion
-
    if (itype != OBJTYPE.none) p.objList.Add(this, itype);
    mesh.rot = Matrix.CreateRotationZ(0);
 
@@ -191,7 +185,7 @@ namespace DarkSide
   }
   public void Update(float dt)
   {
-   mesh.rot = Matrix.CreateRotationZ(body[0].Rotation);
+   mesh.rot = Matrix.CreateRotationZ(objDesc[0].body.Rotation);
    mesh.Position = Position;
   }
   public void Draw(Effect effect)

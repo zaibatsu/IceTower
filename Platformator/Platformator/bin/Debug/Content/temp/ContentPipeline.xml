@@ -2,23 +2,23 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>platTemp.lua</Source>
-      <Name>platTemp</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
+      <Source>87.jpg</Source>
+      <Name>87</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\platTemp.xnb</Output>
-      <Time>2010-01-17T16:47:08.953125+03:00</Time>
+      <Output>D:\IceTower\Platformator\Platformator\bin\Debug\Content\textures\87.xnb</Output>
+      <Time>2006-07-19T01:32:04+04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration Null="true" />
       <CompressContent>false</CompressContent>
-      <RootDirectory>D:\IceTower\Platformator\Platformator\bin\Debug\scripts\</RootDirectory>
+      <RootDirectory>D:\media\pic\</RootDirectory>
       <LoggerRootDirectory Null="true" />
       <IntermediateDirectory>D:\IceTower\Platformator\Platformator\bin\Debug\Content\temp\</IntermediateDirectory>
-      <OutputDirectory>D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\</OutputDirectory>
+      <OutputDirectory>D:\IceTower\Platformator\Platformator\bin\Debug\Content\textures\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -26,8 +26,8 @@
         <Value>2010-01-06T07:09:36+03:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Game\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Game.dll</Key>
-        <Value>2010-01-13T17:07:09.046875+03:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Game\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Game.dll</Key>
+        <Value>2010-01-22T19:36:04.1499092+03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
@@ -46,8 +46,8 @@
         <Value>2009-05-28T01:16:12+04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-01-13T17:09:20.328125+03:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-01-22T19:37:21.0584022+03:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

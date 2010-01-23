@@ -11,6 +11,7 @@ Content\textures\save_load.xnb
 Content\textures\settings.xnb
 Content\textures\menu.xnb
 Content\textures\cibylia.xnb
+Content\textures\none.xnb
 Content\models\player.xnb
 Content\models\level.xnb
 Content\models\background.xnb

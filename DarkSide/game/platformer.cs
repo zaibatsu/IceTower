@@ -15,6 +15,7 @@ namespace DarkSide
   MESH2D background = null;
   public PLAYER player = null;
 
+  
 
   public PLATFORMER(DEVICE_PACK ip, Game game, string iscriptname)
    : base(game)
@@ -39,6 +40,7 @@ namespace DarkSide
    background = p.lua.getObject("background") as MESH2D;
 
    player = p.lua.getObject("player") as PLAYER;
+   p.camera.Position = player.Position;
   }
   public override void Update(GameTime gameTime)
   {
@@ -58,7 +60,7 @@ namespace DarkSide
 
    background.Position = player.Position;
    oops.Position = player.Position + new Vector2(2, 2);
-   p.camera.Position = player.Position;
+   if(p.camera.state == CAMERA.STATE.onPlayer) p.camera.Position = player.Position;
 
    p.objList.Update(dt);
    p.camera.Update();

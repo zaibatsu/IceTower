@@ -45,6 +45,7 @@ namespace DarkSide
   TIME time { get; set; }
   LUA lua { get; set; }
  }
+
  public class DEVICE_PACK : IDEVICE_PACK
  {
   public GraphicsDevice gd { get; set; }
@@ -58,6 +59,7 @@ namespace DarkSide
   public Vector2 scale { get; set; }
   public TIME time { get; set; }
   public LUA lua { get; set; }
+
 
   public DEVICE_PACK() {}
   public DEVICE_PACK(DEVICE_PACK ip)

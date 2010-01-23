@@ -76,7 +76,7 @@ namespace DarkSide
        {
         uvmul.X = -Math.Sign(holdDir.X);
         uvpos = new Vector2(0, 0.5f);
-        obj.body[0].Enabled = false;
+        obj.objDesc[0].body.Enabled = false;
         state = STATE.holdOn; return true;
        }
       }
@@ -92,9 +92,9 @@ namespace DarkSide
    {
     if (!jump)
     {
-     if (obj.body[0].LinearVelocity.Length() < 0.01f) state = STATE.stand;
+     if (obj.objDesc[0].body.LinearVelocity.Length() < 0.01f) state = STATE.stand;
      else state = STATE.run;
-     obj.body[0].LinearVelocity.Y = 0;
+     obj.objDesc[0].body.LinearVelocity.Y = 0;
     }
 
     onGround = true;
@@ -107,9 +107,9 @@ namespace DarkSide
    obj.debugVerts = true;
    p = dp;
    if (obj.Init(dp, "player_1", "player",  new Vector2(0.5f, 2), OBJTYPE.none)) return true;
-   obj.MakeBox(0.5f, 2, 65);
-   obj.geom[0].FrictionCoefficient = 1;
-   obj.geom[0].OnCollision += OnCollision;
+   obj.makeBox(0.5f, 2, 65);
+   obj.setFriction(1);
+   obj.objDesc[0].geom.OnCollision += OnCollision;
 
    return false;
   }
@@ -127,10 +127,10 @@ namespace DarkSide
     //upgame
     if (starthand)
     {
-     obj.body[0].Position += new Vector2(-Math.Sign(holdDir.X) * 0.3f, 1) * 5 * dt;
-     if ((obj.body[0].Position - holdPos).Length() > 1.5f)
+     obj.objDesc[0].body.Position += new Vector2(-Math.Sign(holdDir.X) * 0.3f, 1) * 5 * dt;
+     if ((obj.objDesc[0].body.Position - holdPos).Length() > 1.5f)
      {
-      obj.body[0].Enabled = true;
+      obj.objDesc[0].body.Enabled = true;
       state = STATE.inAir;
      }
     }
@@ -149,20 +149,20 @@ namespace DarkSide
    if (dx < 0) { uvmul = new Vector2(1.0f / 6.0f, 0.5f); uvpos.Y = 0.5f; obj.mesh.Multiply = new Vector2(Math.Abs(obj.mesh.Multiply.X) *  1, obj.mesh.Multiply.Y); }
    if (dx == 0) uvpos.Y = 0;
 
-   if (p.input.ScrollWheelValueNow > p.input.ScrollWheelValuePrev) p.camera.height -= dt * 300;
-   if (p.input.ScrollWheelValueNow < p.input.ScrollWheelValuePrev) p.camera.height += dt * 300;
+   if (p.input.ScrollWheelValueNow > p.input.ScrollWheelValuePrev) p.camera.Height -= dt * 300;
+   if (p.input.ScrollWheelValueNow < p.input.ScrollWheelValuePrev) p.camera.Height += dt * 300;
 
    if (dx != 0 && state == STATE.stand) state = STATE.run;
    #endregion
 
    #region CHECK
    if (dy != 0) { jump = true; state = STATE.inAir; }
-   obj.body[0].ApplyImpulse(new Vector2(dx, dy));
-   if (obj.body[0].LinearVelocity.X > 5) obj.body[0].LinearVelocity.X = 5;
-   if (obj.body[0].LinearVelocity.X < -5) obj.body[0].LinearVelocity.X = -5;
-   obj.body[0].Rotation = 0;
-   obj.body[0].AngularVelocity = 0;
-   obj.body[0].ClearTorque();
+   obj.objDesc[0].body.ApplyImpulse(new Vector2(dx, dy));
+   if (obj.objDesc[0].body.LinearVelocity.X > 5) obj.objDesc[0].body.LinearVelocity.X = 5;
+   if (obj.objDesc[0].body.LinearVelocity.X < -5) obj.objDesc[0].body.LinearVelocity.X = -5;
+   obj.objDesc[0].body.Rotation = 0;
+   obj.objDesc[0].body.AngularVelocity = 0;
+   obj.objDesc[0].body.ClearTorque();
 
    onGround = false;
    #endregion
