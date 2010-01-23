@@ -16,7 +16,7 @@ namespace DarkSide
   public void Remove(IOBJECT iobj) { objList.Remove(iobj); }
   public void RemoveDraw(IDRAWABLE iobj) { drawList.Remove(iobj); }
   public void RemoveUpdate(IUPDATABLE iobj) { updateList.Remove(iobj); }
-
+   
   public IOBJECT this[int i] { get { return objList[i]; } }
   public void Update(float dt)
   {
