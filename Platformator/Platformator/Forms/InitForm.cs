@@ -15,6 +15,7 @@ namespace Platformator
 {
  public partial class InitForm : Form
  {
+  #region INSTANCE
   private static InitForm _instance = null;
   public static InitForm Instance
   {
@@ -27,12 +28,15 @@ namespace Platformator
     return _instance;
    }
   }
+  #endregion
 
 
   public InitForm()
   {
    _instance = this;
    InitializeComponent();
+   progressBar1.Maximum = 9;
+   progressBar1.Minimum = 0;
   }
   private void InitForm_Load(object sender, EventArgs e)
   {
@@ -54,9 +58,8 @@ namespace Platformator
   }
   private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
   {
+   if (listBox1.Text == "") return;
    panel2.Enabled = true;
-   progressBar1.Maximum = 9;
-   progressBar1.Minimum = 0;
    textBox1.Text = "";
    textBox2.Text = "";
 
@@ -122,7 +125,7 @@ namespace Platformator
     sw.WriteLine("ground = OBJECT()");
     sw.WriteLine("ground.debugVerts = true");
     sw.WriteLine("ground:Init(p,\"" + Path.GetFileNameWithoutExtension(textBox2.Text) + "\", \"background\", wh, \"all\")");
-    sw.WriteLine("ground:MakeVerts(1000)");
+    sw.WriteLine("ground:makeVerts(\"" + Path.GetFileNameWithoutExtension(textBox2.Text) + "\", wh)");
     sw.WriteLine("ground:setFriction(0)");
 
 
@@ -140,33 +143,33 @@ namespace Platformator
     sw.Close();
     file.Close();
 
-    progressBar1.Value += 2;
+    progressBar1.Value = 3;
     button1.Text = "Compiling texture...";
     if (ContentFactory.Instance.Build(textBox2.Text) == false)
     {
      MessageBox.Show("Error texture content building.");
      return;
     }
-    progressBar1.Value += 2;
+    progressBar1.Value = 5;
     button1.Text = "Compiling script...";
     if (ContentFactory.Instance.Build(textBox1.Text) == false)
     {
      MessageBox.Show("Error script content building.");
      return;
     }
-    progressBar1.Value += 2;
+    progressBar1.Value = 7;
     button1.Text = "OK ;)";
    }
    if (listBox1.Text == "add lua script")
    {
-    progressBar1.Value += 4;
+    progressBar1.Value = 5;
     button1.Text = "Compiling texture...";
     if (ContentFactory.Instance.Build(textBox1.Text) == false)
     {
      MessageBox.Show("Error script content building.");
      return;
     }
-    progressBar1.Value += 4;
+    progressBar1.Value = 9;
    }
    progressBar1.Value = progressBar1.Maximum;
    GameControl.Instance.InitEditor(Path.GetFileNameWithoutExtension(textBox1.Text));
@@ -225,7 +228,7 @@ namespace Platformator
     progressBar1.Value = 9;
     button1.Enabled = true;
    }
-   else progressBar1.Value += 3;
+   else progressBar1.Value = 6;
   }
 
 

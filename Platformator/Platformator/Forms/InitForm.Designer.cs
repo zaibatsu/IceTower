@@ -163,6 +163,7 @@
    this.MaximizeBox = false;
    this.MinimizeBox = false;
    this.Name = "InitForm";
+   this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
    this.Text = "Choose script";
    this.Load += new System.EventHandler(this.InitForm_Load);
    this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InitForm_FormClosed);

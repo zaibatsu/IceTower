@@ -17,7 +17,7 @@ ground:setFriction(0)
 wh = Vector2(2, 2)
 ball = OBJECT()
 ball:Init(p, "ball", "level", wh, "all")
-ball:MakeCircle(1, 10)
+ball:MakeCircle(wh.X/2, 10)
 ball.Position = Vector2(1, 20)
 ball:setFriction(2)
 

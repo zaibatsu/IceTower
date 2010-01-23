@@ -42,8 +42,6 @@ D:\DarkSide\bin\x86\Debug\Content\save_load.xnb
 D:\DarkSide\bin\x86\Debug\Content\settings.xnb
 D:\IceTower\DarkSide\bin\x86\Debug\DarkSide.exe
 D:\IceTower\DarkSide\bin\x86\Debug\DarkSide.pdb
-D:\IceTower\DarkSide\bin\x86\Debug\FarseerPhysics.dll
-D:\IceTower\DarkSide\bin\x86\Debug\FarseerPhysics.pdb
 D:\IceTower\DarkSide\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\IceTower\DarkSide\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\IceTower\DarkSide\obj\x86\Debug\DarkSide.exe

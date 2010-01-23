@@ -47,14 +47,14 @@ namespace Platformator
     case ".tga":
     case ".dds":
 
-     _project.ProjectOptions.OutputDirectory = exepath + "/Content/textures";
-     _project.ProjectOptions.IntermediateDirectory = exepath + "/Content/temp";
+     _project.ProjectOptions.OutputDirectory = exepath + "\\Content\\textures";
+     _project.ProjectOptions.IntermediateDirectory = exepath + "\\Content\\temp";
 
      break;
     case ".lua":
 
-     _project.ProjectOptions.OutputDirectory = exepath + "/Content/scripts";
-     _project.ProjectOptions.IntermediateDirectory = exepath + "/Content/temp";
+     _project.ProjectOptions.OutputDirectory = _project.ProjectOptions.RootDirectory;
+     _project.ProjectOptions.IntermediateDirectory = _project.ProjectOptions.RootDirectory;
 
      break;
    }
@@ -66,20 +66,46 @@ namespace Platformator
 
 
    if (prepath != "") File.Move(prepath + "TEMP", prepath);
-   prepath = _project.ProjectOptions.OutputDirectory + "/" +Path.GetFileNameWithoutExtension(fileName) + ".xnb";
+   prepath = _project.ProjectOptions.OutputDirectory + "\\" +Path.GetFileNameWithoutExtension(fileName) + ".xnb";
 
-
-   if(ext == ".lua")
+   switch(ext)
    {
-    string outlilfile = exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".lil";
-    string lilfile = exepath + "/Content/scripts/" + Path.GetFileNameWithoutExtension(fileName) + ".lil";
-    File.Delete(outlilfile);
-    File.Move(lilfile, exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".lil");
+    case ".bmp":
+    case ".jpg":
+    case ".jpeg":
+    case ".tga":
+    case ".dds":
+// 
+//      string contPipeli = _project.ProjectOptions.OutputDirectory + "ContentPipeline.xml";
+//      File.Delete(contPipeli);
+// 
+//      string outpicfile = _project.ProjectOptions.OutputDirectory + Path.GetFileNameWithoutExtension(fileName) + ext;
+//      string xnbfile = exepath + "\\Content\\textures\\" + Path.GetFileNameWithoutExtension(fileName) + ".xnb";
+//      File.Delete(xnbfile);
+//      File.Move(outpicfile, xnbfile);
+     break;
 
-    string outpdbfile = exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".pdb";
-    string pdbfile = exepath + "/Content/scripts/" + Path.GetFileNameWithoutExtension(fileName) + ".pdb";
-    File.Delete(outpdbfile);
-    File.Move(pdbfile, exepath + "/Content/" + Path.GetFileNameWithoutExtension(fileName) + ".pdb");
+    case ".lua":
+    string outlilfile = _project.ProjectOptions.OutputDirectory + Path.GetFileNameWithoutExtension(fileName) + ".lil";
+    string outpdbfile = _project.ProjectOptions.OutputDirectory + Path.GetFileNameWithoutExtension(fileName) + ".pdb";
+    string outxnbfile = _project.ProjectOptions.OutputDirectory + Path.GetFileNameWithoutExtension(fileName) + ".xnb";
+    string contPipeli = _project.ProjectOptions.OutputDirectory + "ContentPipeline.xml";
+    File.Delete(contPipeli);
+
+
+    string xnbfile = exepath + "\\Content\\scripts\\" + Path.GetFileNameWithoutExtension(fileName) + ".xnb";
+    File.Delete(xnbfile);
+    File.Move(outxnbfile, xnbfile);
+
+    string lilfile = exepath + "\\Content\\" + Path.GetFileNameWithoutExtension(fileName) + ".lil";
+    File.Delete(lilfile);
+    File.Move(outlilfile, lilfile);
+
+    string pdbfile = exepath + "\\Content\\" + Path.GetFileNameWithoutExtension(fileName) + ".pdb";
+    File.Delete(pdbfile);
+    File.Move(outpdbfile, pdbfile);
+    break;
+
    }
  
    return ret;

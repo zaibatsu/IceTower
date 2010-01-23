@@ -46,12 +46,15 @@ namespace Platformator
   protected override void Draw()
   {
    float dt = (float)timer.Elapsed.TotalSeconds - gametime;
-   game.UpdateEditor(dt);
+   if (Form1.Instance.simButton.Text == "simulation (ON)") game.UpdateEditor(dt);
+   else game.UpdateEditor(0);
    gametime = (float)timer.Elapsed.TotalSeconds;
+
+   game.p.time.Update(dt);
   }
   protected override void Initialize()
   {
   }
- 
+
  }//class
 }//ns

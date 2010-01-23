@@ -147,6 +147,7 @@ namespace DarkSide
    platformer.CallLoadContent();
    Components.Add(platformer);
    p.state.instance = GAMESTATE.ENUM.platformer;
+   platformer.p.camera.state = CAMERA.STATE.free;
   }
   public void UpdateEditor(float dt)
   {

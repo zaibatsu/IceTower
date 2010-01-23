@@ -10,17 +10,9 @@ background.Position = Vector2(0, 0)
 wh = Vector2(100, 40)
 ground = OBJECT()
 ground.debugVerts = true
-ground:Init(p,"level", "background", wh, "all")
+ground:Init(p,"908785688", "background", wh, "all")
 ground:MakeVerts(1000)
 ground:setFriction(0)
-
-
-wh = Vector2(4, 4)
-barrel = OBJECT()
-barrel:Init(p, "barrel", "level", wh, "all")
-barrel:MakeCircle(2, 10)
-barrel.Position = Vector2(0, 30)
-barrel:setFriction(2)
 
 
 player = PLAYER()
