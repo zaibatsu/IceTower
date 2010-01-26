@@ -34,9 +34,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
-    <Reference Include="XNuaContentImporter, Version=1.0.3657.27730, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="XNuaContentImporter, Version=1.0.3678.25160, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DarkSide\XNuaContentImporter.dll</HintPath>
+      <HintPath>..\dlls\XNuaContentImporter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

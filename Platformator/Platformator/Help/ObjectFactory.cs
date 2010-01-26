@@ -19,13 +19,13 @@ namespace Platformator
     if (_instance == null)
     {
      _instance = new ObjectFactory();
+     _instance.Init(Game1.Instance.platformer.p);
     }
     return _instance;
    }
   }
 
   public List<OBJECT> objList = new List<OBJECT>();
-  public List<Texture2D> texList = new List<Texture2D>();
   public OBJECT focusObj = null;
   public bool click = false;
 
@@ -36,9 +36,18 @@ namespace Platformator
   public int boxCount = 0;
   public int ellipseCount = 0;
   public int circleCount = 0;
-  public int textureGeomCount = 0;
 
-
+  public void Init(DEVICE_PACK p)
+  {
+   foreach(OBJECT obj in p.gameList.objList)
+   {
+    if (obj.name == "none") continue;
+    objList.Add(obj);
+    if (obj.geomType == GEOMTYPE.box) boxCount++;
+    if (obj.geomType == GEOMTYPE.circle) circleCount++;
+    if (obj.geomType == GEOMTYPE.ellipse) ellipseCount++;
+   }
+  }
   public void addBox(DEVICE_PACK p, string iname, string texture, Vector2 wh, Vector2 physWH, float mass, float friction, bool isStatic)
   {
    OBJECT obj = new OBJECT();
@@ -54,13 +63,51 @@ namespace Platformator
    if (focusPos != new Vector2(0, -1000)) obj.Position = focusPos;
    boxCount++;
   }
+  public void addCircle(DEVICE_PACK p, string iname, string texture, Vector2 wh, float radius, float mass, float friction, bool isStatic)
+  {
+   OBJECT obj = new OBJECT();
+   obj.Init(p, texture, "ui", wh, OBJTYPE.all);
+   obj.makeCircle(radius, mass);
+   obj.Position = new Vector2(0, -1000);
+   obj.setFriction(friction);
+   obj.setStatic(isStatic);
+   obj.name = iname;
+   objList.Add(obj);
+   click = true;
+   focusObj = obj;
+   if (focusPos != new Vector2(0, -1000)) obj.Position = focusPos;
+   circleCount++;
+  }
+  public void addEllipse(DEVICE_PACK p, string iname, string texture, Vector2 wh, Vector2 radXY, float mass, float friction, bool isStatic)
+  {
+   OBJECT obj = new OBJECT();
+   obj.Init(p, texture, "ui", wh, OBJTYPE.all);
+   obj.makeEllipse(radXY.X, radXY.Y, mass);
+   obj.Position = new Vector2(0, -1000);
+   obj.setFriction(friction);
+   obj.setStatic(isStatic);
+   obj.name = iname;
+   objList.Add(obj);
+   click = true;
+   focusObj = obj;
+   if (focusPos != new Vector2(0, -1000)) obj.Position = focusPos;
+   ellipseCount++;
+  }
   public void removeLast()
   {
+   if (objList.Count == 0) return;
    focusPos = objList[objList.Count - 1].Position;
    objList[objList.Count - 1].Delete();
    if (objList[objList.Count - 1].geomType == GEOMTYPE.box) boxCount--;
    objList.Remove(objList[objList.Count - 1]);
    focusObj = null;
+  }
+  public void makeLast(OBJECT obj)
+  {
+   objList.Remove(obj);
+   objList.Add(obj);
+   focusObj = obj;
+   nextGeomType = obj.geomType;
   }
   public string setPos(int x, int y)
   {
@@ -115,16 +162,12 @@ namespace Platformator
    Ray ray = new Ray(pos, dir);
    float? ri = ray.Intersects(plane);
 
-   if (ri != null)
-   {
-    pos += dir * ri.Value;
-   }
+   if (ri != null) pos += dir * ri.Value;
 
    Vector2 pos2 = new Vector2(pos.X, pos.Y);
    foreach (OBJECT obj in objList)
-   {
-    if ((obj.Position - pos2).Length() < obj.mesh.wh.Length()) return obj;
-   }
+    foreach(OBJ_DESC desc in obj.objDesc)
+     if(desc.geom.Collide(pos2)) return obj;
 
    return null;
   }

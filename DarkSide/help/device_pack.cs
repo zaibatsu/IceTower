@@ -21,6 +21,7 @@ namespace DarkSide
  {
   OBJTYPE type { get; set; }
   void Draw(Effect effect);
+  void debugDraw();
  }
  public interface IOBJECT : IUPDATABLE, IDRAWABLE
  {
@@ -39,7 +40,7 @@ namespace DarkSide
   CAMERA camera { get; set; }
   INPUT input { get; set; }
   PhysicsSimulator ps { get; set; }
-  OBJECTLIST objList { get; set; }
+  GAMELIST gameList { get; set; }
   GAMESTATE state { get; set; }
   Vector2 scale { get; set; }
   TIME time { get; set; }
@@ -54,7 +55,7 @@ namespace DarkSide
   public PhysicsSimulator ps { get; set; }
   public CAMERA camera { get; set; }
   public INPUT input { get; set; }
-  public OBJECTLIST objList { get; set; }
+  public GAMELIST gameList { get; set; }
   public GAMESTATE state { get; set; }
   public Vector2 scale { get; set; }
   public TIME time { get; set; }

@@ -27,9 +27,14 @@ namespace Platformator
     }
     return _instance;
    }
+   set
+   {
+    _instance = value;
+   }
   }
   #endregion
 
+  string action = "";
 
   public InitForm()
   {
@@ -38,7 +43,7 @@ namespace Platformator
    progressBar1.Maximum = 9;
    progressBar1.Minimum = 0;
   }
-  private void InitForm_Load(object sender, EventArgs e)
+  public void InitForm_Load(object sender, EventArgs e)
   {
    string path = ".\\Content\\";
    String fullPath = Path.GetFullPath(Path.GetDirectoryName(path));
@@ -59,6 +64,7 @@ namespace Platformator
   private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
   {
    if (listBox1.Text == "") return;
+   action = listBox1.Text;
    panel2.Enabled = true;
    textBox1.Text = "";
    textBox2.Text = "";
@@ -67,48 +73,48 @@ namespace Platformator
    {
     progressBar1.Value = 9;
 
-    button1.Enabled = true;
+    okButton.Enabled = true;
     textBox1.Text = listBox1.Text;
     button2.Enabled = false;
-    button3.Enabled = false;
+    OpenSave.Enabled = false;
 
     textBox1.Enabled = false;
     textBox2.Enabled = false;
-    button3.Text = "save";
+    OpenSave.Text = "save";
    }
    if (listBox1.Text == "new script")
    {
     progressBar1.Value = 3;
-    button1.Enabled = false;
+    okButton.Enabled = false;
     textBox1.Text = "";
     button2.Enabled = true;
-    button3.Enabled = true;
+    OpenSave.Enabled = true;
 
     textBox1.Enabled = true;
     textBox2.Enabled = true;
-    button3.Text = "save";
+    OpenSave.Text = "save";
    }
    if (listBox1.Text == "add lua script")
    {
     progressBar1.Value = 3;
-    button1.Enabled = false;
+    okButton.Enabled = false;
     textBox1.Text = "";
     button2.Enabled = false;
-    button3.Enabled = true;
-    button3.Text = "open";
+    OpenSave.Enabled = true;
+    OpenSave.Text = "open";
 
     textBox1.Enabled = true;
     textBox2.Enabled = false;
    }
   }
-  private void button1_Click(object sender, EventArgs e)
+  private void okButton_Click(object sender, EventArgs e)
   {
-   button1.Enabled = false;
+   okButton.Enabled = false;
    if (textBox1.Text == "") return;
 
-   button1.Text = "wait...";
+   okButton.Text = "wait...";
    progressBar1.Value = 1;
-   if (listBox1.Text == "new script")
+   if (action == "new script")
    {
     FileStream file = saveFileDialog1.OpenFile() as FileStream;
     StreamWriter sw = new StreamWriter(file);
@@ -144,26 +150,26 @@ namespace Platformator
     file.Close();
 
     progressBar1.Value = 3;
-    button1.Text = "Compiling texture...";
+    okButton.Text = "Compiling texture...";
     if (ContentFactory.Instance.Build(textBox2.Text) == false)
     {
      MessageBox.Show("Error texture content building.");
      return;
     }
     progressBar1.Value = 5;
-    button1.Text = "Compiling script...";
+    okButton.Text = "Compiling script...";
     if (ContentFactory.Instance.Build(textBox1.Text) == false)
     {
      MessageBox.Show("Error script content building.");
      return;
     }
     progressBar1.Value = 7;
-    button1.Text = "OK ;)";
+    okButton.Text = "OK ;)";
    }
-   if (listBox1.Text == "add lua script")
+   if (action == "add lua script")
    {
     progressBar1.Value = 5;
-    button1.Text = "Compiling texture...";
+    okButton.Text = "Compiling texture...";
     if (ContentFactory.Instance.Build(textBox1.Text) == false)
     {
      MessageBox.Show("Error script content building.");
@@ -172,18 +178,24 @@ namespace Platformator
     progressBar1.Value = 9;
    }
    progressBar1.Value = progressBar1.Maximum;
+
+   Form1.Instance.simButton.Text = "simulation (OFF)";
    GameControl.Instance.InitEditor(Path.GetFileNameWithoutExtension(textBox1.Text));
+   Game1.Instance.p.time.Update(0);
+   Game1.Instance.p.time.Update(0);
    this.Hide();
+   Form1.Instance.Show();
   }
   private void InitForm_FormClosed(object sender, FormClosedEventArgs e)
   {
    Form1.Instance.Dispose();
    Form1.Instance.Close();
   }
-  private void button3_Click_1(object sender, EventArgs e)
+  public void button3_Click_1(object sender, EventArgs e)
   {
-   if (button3.Text == "open")
+   if (OpenSave.Text == "open")
    {
+    openFileDialog1.FileName = "";
     openFileDialog1.RestoreDirectory = true;
     openFileDialog1.InitialDirectory = Path.GetFullPath("scripts");
     openFileDialog1.Filter = "(*.lua)|*.lua";
@@ -192,7 +204,7 @@ namespace Platformator
     if (openFileDialog1.FileName == "") return;
     textBox1.Text = openFileDialog1.FileName;
     progressBar1.Value = 9;
-    button1.Enabled = true;
+    okButton.Enabled = true;
 
     return;
    }
@@ -211,12 +223,13 @@ namespace Platformator
    if (textBox2.Text != "")
    {
     progressBar1.Value = 9;
-    button1.Enabled = true;
+    okButton.Enabled = true;
    }
    else progressBar1.Value += 3;
   }
-  private void button2_Click(object sender, EventArgs e)
+  public void texture_Click(object sender, EventArgs e)
   {
+   openFileDialog1.FileName = "";
    openFileDialog1.RestoreDirectory = true;
    openFileDialog1.InitialDirectory = Path.GetFullPath("textures");
    openFileDialog1.Filter = "(*.BMP;*.JPG;*.JPEG;*.GIF;*.TGA;*.DDS)|*.BMP;*.JPG;*.JPEG;*.GIF;*.TGA;*.DDS";
@@ -226,10 +239,11 @@ namespace Platformator
    if (textBox1.Text != "")
    {
     progressBar1.Value = 9;
-    button1.Enabled = true;
+    okButton.Enabled = true;
    }
    else progressBar1.Value = 6;
   }
+
 
 
  }//class

@@ -39,7 +39,7 @@ namespace DarkSide
   {
    DEVICE_PACK p = (DEVICE_PACK)L.Globals[pname].CLRObject;
    p.Init(ip);
-   p.objList = ip.objList;
+   p.gameList = ip.gameList;
    p.camera = ip.camera;
    LoadScript(name);
   }

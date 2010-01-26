@@ -29,7 +29,7 @@
   private void InitializeComponent()
   {
    System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitForm));
-   this.button1 = new System.Windows.Forms.Button();
+   this.okButton = new System.Windows.Forms.Button();
    this.listBox1 = new System.Windows.Forms.ListBox();
    this.progressBar1 = new System.Windows.Forms.ProgressBar();
    this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -40,21 +40,21 @@
    this.textBox1 = new System.Windows.Forms.TextBox();
    this.label1 = new System.Windows.Forms.Label();
    this.textBox2 = new System.Windows.Forms.TextBox();
-   this.button3 = new System.Windows.Forms.Button();
+   this.OpenSave = new System.Windows.Forms.Button();
    this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
    this.panel2.SuspendLayout();
    this.SuspendLayout();
    // 
-   // button1
+   // okButton
    // 
-   this.button1.Enabled = false;
-   this.button1.Location = new System.Drawing.Point(3, 104);
-   this.button1.Name = "button1";
-   this.button1.Size = new System.Drawing.Size(157, 27);
-   this.button1.TabIndex = 0;
-   this.button1.Text = "ok";
-   this.button1.UseVisualStyleBackColor = true;
-   this.button1.Click += new System.EventHandler(this.button1_Click);
+   this.okButton.Enabled = false;
+   this.okButton.Location = new System.Drawing.Point(3, 104);
+   this.okButton.Name = "okButton";
+   this.okButton.Size = new System.Drawing.Size(157, 27);
+   this.okButton.TabIndex = 0;
+   this.okButton.Text = "ok";
+   this.okButton.UseVisualStyleBackColor = true;
+   this.okButton.Click += new System.EventHandler(this.okButton_Click);
    // 
    // listBox1
    // 
@@ -80,7 +80,7 @@
    this.panel2.Controls.Add(this.textBox1);
    this.panel2.Controls.Add(this.label1);
    this.panel2.Controls.Add(this.textBox2);
-   this.panel2.Controls.Add(this.button3);
+   this.panel2.Controls.Add(this.OpenSave);
    this.panel2.Enabled = false;
    this.panel2.Location = new System.Drawing.Point(167, 3);
    this.panel2.Name = "panel2";
@@ -103,7 +103,7 @@
    this.button2.TabIndex = 18;
    this.button2.Text = "open";
    this.button2.UseVisualStyleBackColor = true;
-   this.button2.Click += new System.EventHandler(this.button2_Click);
+   this.button2.Click += new System.EventHandler(this.texture_Click);
    // 
    // label2
    // 
@@ -137,15 +137,15 @@
    this.textBox2.Size = new System.Drawing.Size(250, 20);
    this.textBox2.TabIndex = 17;
    // 
-   // button3
+   // OpenSave
    // 
-   this.button3.Location = new System.Drawing.Point(338, 3);
-   this.button3.Name = "button3";
-   this.button3.Size = new System.Drawing.Size(75, 23);
-   this.button3.TabIndex = 14;
-   this.button3.Text = "save";
-   this.button3.UseVisualStyleBackColor = true;
-   this.button3.Click += new System.EventHandler(this.button3_Click_1);
+   this.OpenSave.Location = new System.Drawing.Point(338, 3);
+   this.OpenSave.Name = "OpenSave";
+   this.OpenSave.Size = new System.Drawing.Size(75, 23);
+   this.OpenSave.TabIndex = 14;
+   this.OpenSave.Text = "save";
+   this.OpenSave.UseVisualStyleBackColor = true;
+   this.OpenSave.Click += new System.EventHandler(this.button3_Click_1);
    // 
    // openFileDialog1
    // 
@@ -159,7 +159,7 @@
    this.Controls.Add(this.panel2);
    this.Controls.Add(this.progressBar1);
    this.Controls.Add(this.listBox1);
-   this.Controls.Add(this.button1);
+   this.Controls.Add(this.okButton);
    this.MaximizeBox = false;
    this.MinimizeBox = false;
    this.Name = "InitForm";
@@ -175,8 +175,7 @@
 
   #endregion
 
-  private System.Windows.Forms.Button button1;
-  private System.Windows.Forms.ListBox listBox1;
+  private System.Windows.Forms.Button okButton;
   private System.Windows.Forms.ProgressBar progressBar1;
   public System.Windows.Forms.SaveFileDialog saveFileDialog1;
   private System.Windows.Forms.Panel panel2;
@@ -186,7 +185,8 @@
   private System.Windows.Forms.TextBox textBox1;
   private System.Windows.Forms.Label label1;
   private System.Windows.Forms.TextBox textBox2;
-  private System.Windows.Forms.Button button3;
   public System.Windows.Forms.OpenFileDialog openFileDialog1;
+  public System.Windows.Forms.ListBox listBox1;
+  public System.Windows.Forms.Button OpenSave;
  }
 }

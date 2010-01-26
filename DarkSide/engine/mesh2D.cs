@@ -13,7 +13,7 @@ namespace DarkSide
   public Texture2D tex { get; set; }
   private Model model { get; set; }
 
-  private string texname { get; set; }
+  public string texname { get; set; }
   private string modelname { get; set; }
 
   public Vector4 uv;
@@ -80,7 +80,7 @@ namespace DarkSide
    if (tex == null || model == null) return true;
    rot = Matrix.Identity;
 
-   if (itype != OBJTYPE.none) p.objList.AddDraw(this, itype);
+   if (itype != OBJTYPE.none) p.gameList.AddDraw(this, itype);
    return false;
   }
   public void Draw(Effect effect)
@@ -101,7 +101,7 @@ namespace DarkSide
     p.gd.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, 4, 0, 2);
    }
   }
-
+  public void debugDraw() {}
 
   public Vector2 AnimCount
   {

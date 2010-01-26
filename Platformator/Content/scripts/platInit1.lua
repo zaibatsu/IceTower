@@ -14,21 +14,6 @@ ground:makeVerts("level_1", wh)
 ground:setFriction(0)
 
 
-wh = Vector2(2, 2)
-barrel = OBJECT()
-barrel:Init(p, "barrel", "level", wh, "all")
-barrel:makeCircle(1, 10)
-barrel.Position = Vector2(0, 0)
-barrel:setFriction(2)
-
-
-wh = Vector2(2, 2)
-barrel2 = OBJECT()
-barrel2:Init(p, "barrel", "level", wh, "all")
-barrel2:makeCircle(1, 10)
-barrel2.Position = Vector2(0, 6)
-barrel2:setFriction(2)
-
 
 wh = Vector2(3, 3)
 oops = MESH2D()
@@ -37,5 +22,5 @@ oops:Init(p, "oops_1", "oops", wh, "updateOnly")
 
 player = PLAYER()
 player:Init(p)
-pos = Vector2(0,50)
+pos = Vector2(0,25)
 player.Position = pos

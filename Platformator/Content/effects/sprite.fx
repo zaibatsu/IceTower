@@ -19,8 +19,9 @@ VertexToPixel VS(float4 p : POSITION0,float2 t:TEXCOORD0)
 {
  VertexToPixel OUT = (VertexToPixel)0;
  
+ p.xy *= k.xy;
  OUT.p = mul(p, world);
- OUT.p.xy = OUT.p.xy * k.xy + k.zw;
+ OUT.p.xy = OUT.p.xy + k.zw;
  OUT.p = mul(OUT.p, viewProj);
  OUT.t = t*uv.xy + uv.zw;
 

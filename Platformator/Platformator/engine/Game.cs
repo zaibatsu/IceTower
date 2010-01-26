@@ -24,8 +24,13 @@ namespace Platformator
     }
     return _instance;
    }
+   set
+   {
+    _instance = value;
+   }
   }
 
+  public string editorname = "";
 
   public GameControl()
   {
@@ -39,6 +44,7 @@ namespace Platformator
   {
    game = new Game1();
    game.InitEditor(GraphicsDevice, Services, platname);
+   editorname = platname;
 
    timer = Stopwatch.StartNew();
    Application.Idle += delegate { Invalidate(); };
@@ -46,6 +52,7 @@ namespace Platformator
   protected override void Draw()
   {
    float dt = (float)timer.Elapsed.TotalSeconds - gametime;
+   if (dt > 5) dt = 0;
    if (Form1.Instance.simButton.Text == "simulation (ON)") game.UpdateEditor(dt);
    else game.UpdateEditor(0);
    gametime = (float)timer.Elapsed.TotalSeconds;

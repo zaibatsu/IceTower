@@ -22,7 +22,7 @@ namespace DarkSide
   {
    p = new DEVICE_PACK(ip);
    p.ps = new PhysicsSimulator(new Vector2(0, -10));
-   p.objList = new OBJECTLIST();
+   p.gameList = new GAMELIST();
    p.camera = new CAMERA();
    p.camera.Init(p);
    scriptname = iscriptname;
@@ -62,7 +62,7 @@ namespace DarkSide
    oops.Position = player.Position + new Vector2(2, 2);
    if(p.camera.state == CAMERA.STATE.onPlayer) p.camera.Position = player.Position;
 
-   p.objList.Update(dt);
+   p.gameList.Update(dt);
    p.camera.Update();
 
    base.Update(gameTime);
@@ -77,7 +77,7 @@ namespace DarkSide
    effect.CurrentTechnique.Passes[0].Begin();
 
 
-   p.objList.Draw(effect);
+   p.gameList.Draw(effect);
    player.Draw(effect);
    if (oops.Position.Y < -3) oops.Draw(effect);
 
@@ -87,6 +87,7 @@ namespace DarkSide
    player.contactDraw();
    OBJECT ground = p.lua.getObject("ground") as OBJECT;
    ground.debugVertsDraw(0);
+   p.gameList.debugDraw();
 
    base.Draw(gameTime);
   }

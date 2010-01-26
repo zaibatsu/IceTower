@@ -63,7 +63,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="XnaDevRu.ContentBuilder.Framework, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\XCB_Source\XnaDevRu.ContentBuilder.Framework\bin\Debug\XnaDevRu.ContentBuilder.Framework.dll</HintPath>
+      <HintPath>dlls\XnaDevRu.ContentBuilder.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="XNua, Version=0.0.1.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\XNua.dll</HintPath>
+    </Reference>
+    <Reference Include="XNuaCompiler, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\XNuaCompiler.dll</HintPath>
+    </Reference>
+    <Reference Include="XNuaContentImporter, Version=1.0.3678.25160, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\XNuaContentImporter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

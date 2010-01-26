@@ -89,13 +89,13 @@
     </Reference>
     <Reference Include="XNua, Version=0.0.1.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\XNua.dll</HintPath>
+      <HintPath>dlls\XNua.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="engine\button.cs" />
     <Compile Include="engine\lua.cs" />
-    <Compile Include="engine\objectList.cs" />
+    <Compile Include="engine\gameList.cs" />
     <Compile Include="engine\rope.cs" />
     <Compile Include="engine\timer.cs" />
     <Compile Include="game\menu.cs" />

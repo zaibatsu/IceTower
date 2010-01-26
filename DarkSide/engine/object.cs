@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerGames.FarseerPhysics.Dynamics;
@@ -16,7 +17,7 @@ namespace DarkSide
   public MESH2D mesh = new MESH2D();
   public GEOMTYPE geomType { get; set; }
   public List<OBJ_DESC> objDesc = new List<OBJ_DESC>();
-  public string name = "name string";
+  public string name = "none";
 
   public Vector2 Position
   {
@@ -28,6 +29,17 @@ namespace DarkSide
     }
    }
    get { return objDesc[0].Position; }
+  }
+  public float Rotation
+  {
+   get
+   {
+    return objDesc[0].body.Rotation;
+   }
+   set
+   {
+    objDesc[0].body.Rotation = value;
+   }
   }
 
   public bool debugVerts { get; set; }
@@ -110,7 +122,7 @@ namespace DarkSide
   }
   public void Delete()
   {
-   if (objDesc.Count == 0)  return;
+   if (objDesc.Count == 0) return;
    geomType = GEOMTYPE.none;
    foreach (OBJ_DESC obj in objDesc)
    {
@@ -118,7 +130,7 @@ namespace DarkSide
     obj.geom.Dispose();
    }
    objDesc.Clear();
-   p.objList.Remove(this);
+   p.gameList.Remove(this);
   }
   public void setStatic(bool b)
   {
@@ -163,7 +175,40 @@ namespace DarkSide
    baseEffect.CurrentTechnique.Passes[0].End();
    baseEffect.End();
   }
+  public void debugDraw()
+  {
+   if (baseEffect == null) baseEffect = new BasicEffect(p.gd, null);
 
+
+   p.gd.VertexDeclaration = new VertexDeclaration(p.gd, VertexPositionColor.VertexElements);
+   p.gd.RenderState.PointSize = 4;
+   baseEffect.Projection = p.camera.proj;
+   baseEffect.View = p.camera.view;
+   baseEffect.VertexColorEnabled = true;
+   baseEffect.LightingEnabled = false;
+   baseEffect.Begin();
+   baseEffect.CurrentTechnique.Passes[0].Begin();
+
+   foreach (OBJ_DESC obj in objDesc)
+   {
+    //baseEffect.World = ;
+    baseEffect.CommitChanges();
+
+    VertexPositionColor[] vertsDraw = new VertexPositionColor[obj.geom.LocalVertices.Count];
+    for (int j = 0; j < obj.geom.LocalVertices.Count; ++j)
+    {
+     vertsDraw[j].Position = new Vector3(obj.geom.LocalVertices[j], 0);
+     vertsDraw[j].Position = Vector3.Transform(vertsDraw[j].Position, Matrix.CreateRotationZ(obj.geom.Rotation));
+     vertsDraw[j].Position += new Vector3(obj.geom.Position, 0);
+     vertsDraw[j].Color = Color.DarkSeaGreen;
+    }
+    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.LineStrip, vertsDraw, 0, obj.geom.LocalVertices.Count - 1);
+    p.gd.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.PointList, vertsDraw, 0, obj.geom.LocalVertices.Count);
+   }
+
+   baseEffect.CurrentTechnique.Passes[0].End();
+   baseEffect.End();
+  }
 
   public OBJECT()
   {
@@ -178,14 +223,14 @@ namespace DarkSide
    p = dp;
    mesh.Init(p, itexname, imodelname, iwh, OBJTYPE.none);
    if (debugVerts) baseEffect = new BasicEffect(p.gd, null);
-   if (itype != OBJTYPE.none) p.objList.Add(this, itype);
+   if (itype != OBJTYPE.none) p.gameList.Add(this, itype);
    mesh.rot = Matrix.CreateRotationZ(0);
 
    return false;
   }
   public void Update(float dt)
   {
-   mesh.rot = Matrix.CreateRotationZ(objDesc[0].body.Rotation);
+   mesh.rot = Matrix.CreateRotationZ(objDesc[0].geom.Rotation);
    mesh.Position = Position;
   }
   public void Draw(Effect effect)

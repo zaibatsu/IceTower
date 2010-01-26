@@ -52,6 +52,7 @@ namespace DarkSide
    set
    {
     height = value;
+    if (height < 1) height = 1;
     eye = new Vector3(eye.X, eye.Y, height);
    }
   }

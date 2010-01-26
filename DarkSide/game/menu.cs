@@ -20,7 +20,7 @@ namespace DarkSide
    : base(game)
   {
    p = new DEVICE_PACK(ip);
-   p.objList = new OBJECTLIST();
+   p.gameList = new GAMELIST();
    p.camera = new CAMERA();
    p.camera.Init(p);
   }
@@ -40,7 +40,7 @@ namespace DarkSide
   }
   public override void Update(GameTime gameTime)
   {
-   p.objList.Update(p.time.dt);
+   p.gameList.Update(p.time.dt);
    if (p.state.instance != GAMESTATE.ENUM.menu) return;
 
    if (p.input.isKeyJustDown(Keys.Enter) && butI == 0)
@@ -89,7 +89,7 @@ namespace DarkSide
 
    effect.Begin();
    effect.CurrentTechnique.Passes[0].Begin();
-   p.objList.Draw(effect);
+   p.gameList.Draw(effect);
    effect.CurrentTechnique.Passes[0].End();
    effect.End();
 

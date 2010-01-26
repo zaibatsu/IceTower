@@ -84,7 +84,7 @@ namespace DarkSide
      ongr = false;
     }
     if (cont.Normal.Y == 1 && ongr == false) { ongr = true; break; }
-    if (geom2.FrictionCoefficient == 2 && ongr == false) { ongr = true; break; }
+    //if (ongr == false) { ongr = true; break; }
    }
    #endregion
 
@@ -106,7 +106,7 @@ namespace DarkSide
   {
    obj.debugVerts = true;
    p = dp;
-   if (obj.Init(dp, "player_1", "player",  new Vector2(0.5f, 2), OBJTYPE.none)) return true;
+   if (obj.Init(dp, "player_1", "player", new Vector2(0.5f, 2), OBJTYPE.none)) return true;
    obj.makeBox(0.5f, 2, 65);
    obj.setFriction(1);
    obj.objDesc[0].geom.OnCollision += OnCollision;
@@ -146,7 +146,7 @@ namespace DarkSide
    if (onGround == false) dy = 0;
 
    if (dx > 0) { uvmul = new Vector2(1.0f / 6.0f, 0.5f); uvpos.Y = 0.5f; obj.mesh.Multiply = new Vector2(Math.Abs(obj.mesh.Multiply.X) * -1, obj.mesh.Multiply.Y); }
-   if (dx < 0) { uvmul = new Vector2(1.0f / 6.0f, 0.5f); uvpos.Y = 0.5f; obj.mesh.Multiply = new Vector2(Math.Abs(obj.mesh.Multiply.X) *  1, obj.mesh.Multiply.Y); }
+   if (dx < 0) { uvmul = new Vector2(1.0f / 6.0f, 0.5f); uvpos.Y = 0.5f; obj.mesh.Multiply = new Vector2(Math.Abs(obj.mesh.Multiply.X) * 1, obj.mesh.Multiply.Y); }
    if (dx == 0) uvpos.Y = 0;
 
    if (p.input.ScrollWheelValueNow > p.input.ScrollWheelValuePrev) p.camera.Height -= dt * 300;

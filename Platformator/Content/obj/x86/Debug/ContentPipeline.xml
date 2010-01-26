@@ -8,7 +8,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\effects\sprite.xnb</Output>
-      <Time>2010-01-13T19:11:17.6875+03:00</Time>
+      <Time>2010-01-24T22:37:12+03:00</Time>
     </Item>
     <Item>
       <Source>textures\player.tga</Source>
@@ -156,7 +156,7 @@
       <Time>2010-01-13T19:45:51.71875+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\player_0.xml</Key>
-        <Value>2010-01-22T23:09:40.0973133+03:00</Value>
+        <Value>2010-01-26T14:04:33.15+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -172,7 +172,7 @@
       <Time>2010-01-08T22:35:58.375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\level_0.xml</Key>
-        <Value>2010-01-22T23:09:40.2023133+03:00</Value>
+        <Value>2010-01-26T14:04:33.183+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -188,7 +188,7 @@
       <Time>2010-01-13T19:45:34.046875+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\background_0.xml</Key>
-        <Value>2010-01-22T23:09:40.2293133+03:00</Value>
+        <Value>2010-01-26T14:04:33.209+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -201,7 +201,7 @@
       <Time>2010-01-08T22:35:58.375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\oops_0.xml</Key>
-        <Value>2010-01-22T23:09:40.2573133+03:00</Value>
+        <Value>2010-01-26T14:04:33.235+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -214,7 +214,7 @@
       <Time>2010-01-11T15:02:27.234375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\ui_0.xml</Key>
-        <Value>2010-01-22T23:09:40.2823133+03:00</Value>
+        <Value>2010-01-26T14:04:33.26+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -242,16 +242,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\scripts\platInit1.xnb</Output>
-      <Time>2010-01-23T16:07:12.8422262+03:00</Time>
-    </Item>
-    <Item>
-      <Source>scripts\platInit2.lua</Source>
-      <Name>scripts\platInit2</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\scripts\platInit2.xnb</Output>
-      <Time>2010-01-23T16:05:46.4662262+03:00</Time>
+      <Time>2010-01-25T22:44:30.1544863+03:00</Time>
     </Item>
     <Item>
       <Source>models\player.x</Source>
@@ -300,8 +291,8 @@
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>D:\IceTower\DarkSide\XNuaContentImporter.dll</Key>
-        <Value>2010-01-06T07:09:36+03:00</Value>
+        <Key>D:\IceTower\Platformator\Platformator\dlls\XNuaContentImporter.dll</Key>
+        <Value>2010-01-26T13:58:42.483+03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Game\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Game.dll</Key>
