@@ -78,6 +78,7 @@ namespace Platformator
 
    campos = new Vector2(e.X, e.Y);
 
+   
    pl.p.camera.Position = Vector2.Zero;
    pl.p.camera.Update();
   }
