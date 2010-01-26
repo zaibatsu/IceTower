@@ -130,7 +130,7 @@ namespace DarkSide
     obj.geom.Dispose();
    }
    objDesc.Clear();
-   p.gameList.Remove(this);
+   p.gameList.objList.Remove(this);
   }
   public void setStatic(bool b)
   {
@@ -221,11 +221,12 @@ namespace DarkSide
   public bool Init(DEVICE_PACK dp, string itexname, string imodelname, Vector2 iwh, OBJTYPE itype)
   {
    p = dp;
+   type = itype;
    mesh.Init(p, itexname, imodelname, iwh, OBJTYPE.none);
    if (debugVerts) baseEffect = new BasicEffect(p.gd, null);
-   if (itype != OBJTYPE.none) p.gameList.Add(this, itype);
    mesh.rot = Matrix.CreateRotationZ(0);
 
+   if (type != OBJTYPE.none) p.gameList.objList.Add(this);
    return false;
   }
   public void Update(float dt)

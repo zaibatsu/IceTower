@@ -71,6 +71,7 @@ namespace DarkSide
    uv = new Vector4(1, 1, 0, 0);
    texname = itexname;
    modelname = imodelname;
+   type = itype;
 
    tex = null;
    model = null;
@@ -80,7 +81,7 @@ namespace DarkSide
    if (tex == null || model == null) return true;
    rot = Matrix.Identity;
 
-   if (itype != OBJTYPE.none) p.gameList.AddDraw(this, itype);
+   if (type != OBJTYPE.none) p.gameList.meshList.Add(this);
    return false;
   }
   public void Draw(Effect effect)

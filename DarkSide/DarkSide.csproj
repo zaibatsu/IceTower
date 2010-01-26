@@ -96,6 +96,7 @@
     <Compile Include="engine\button.cs" />
     <Compile Include="engine\lua.cs" />
     <Compile Include="engine\gameList.cs" />
+    <Compile Include="engine\monster.cs" />
     <Compile Include="engine\rope.cs" />
     <Compile Include="engine\timer.cs" />
     <Compile Include="game\menu.cs" />

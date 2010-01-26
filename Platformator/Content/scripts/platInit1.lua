@@ -9,7 +9,7 @@ background.Position = Vector2(0, 0)
 wh = Vector2(100, 40)
 ground = OBJECT()
 ground.debugVerts = true
-ground:Init(p, "level_1", "level", wh, "all")
+ground:Init(p, "level_1", "plat", wh, "all")
 ground:makeVerts("level_1", wh)
 ground:setFriction(0)
 
@@ -17,7 +17,7 @@ ground:setFriction(0)
 
 wh = Vector2(3, 3)
 oops = MESH2D()
-oops:Init(p, "oops_1", "oops", wh, "updateOnly")
+oops:Init(p, "oops_1", "plat", wh, "updateOnly")
 
 
 player = PLAYER()
