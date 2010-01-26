@@ -144,6 +144,15 @@
       <Time>2010-01-23T00:16:20.2933133+03:00</Time>
     </Item>
     <Item>
+      <Source>textures\skeleton.tga</Source>
+      <Name>textures\skeleton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\textures\skeleton.xnb</Output>
+      <Time>2010-01-26T18:37:34.547+03:00</Time>
+    </Item>
+    <Item>
       <Source>models\player.x</Source>
       <Name>models\player</Name>
       <Importer>XImporter</Importer>
@@ -156,7 +165,7 @@
       <Time>2010-01-13T19:45:51.71875+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\player_0.xml</Key>
-        <Value>2010-01-26T14:04:33.15+03:00</Value>
+        <Value>2010-01-26T22:09:54.7854654+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -172,7 +181,7 @@
       <Time>2010-01-08T22:35:58.375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\level_0.xml</Key>
-        <Value>2010-01-26T14:04:33.183+03:00</Value>
+        <Value>2010-01-26T22:09:54.8124654+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -188,7 +197,7 @@
       <Time>2010-01-13T19:45:34.046875+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\background_0.xml</Key>
-        <Value>2010-01-26T14:04:33.209+03:00</Value>
+        <Value>2010-01-26T22:09:54.8384654+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -201,7 +210,7 @@
       <Time>2010-01-08T22:35:58.375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\oops_0.xml</Key>
-        <Value>2010-01-26T14:04:33.235+03:00</Value>
+        <Value>2010-01-26T22:09:54.8664654+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -214,7 +223,20 @@
       <Time>2010-01-11T15:02:27.234375+03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\models\ui_0.xml</Key>
-        <Value>2010-01-26T14:04:33.26+03:00</Value>
+        <Value>2010-01-26T22:09:54.8934654+03:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>models\plat..x</Source>
+      <Name>models\plat</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\models\plat.xnb</Output>
+      <Time>2010-01-26T15:26:58.103+03:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\models\plat._0.xml</Key>
+        <Value>2010-01-26T22:09:54.9194654+03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -224,7 +246,7 @@
       <Processor>XNuaProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\scripts\init.xnb</Output>
-      <Time>2010-01-17T00:47:53.015625+03:00</Time>
+      <Time>2010-01-26T19:44:20.3134654+03:00</Time>
     </Item>
     <Item>
       <Source>scripts\menuInit.lua</Source>
@@ -234,15 +256,6 @@
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\scripts\menuInit.xnb</Output>
       <Time>2010-01-13T19:29:18.484375+03:00</Time>
-    </Item>
-    <Item>
-      <Source>scripts\platInit1.lua</Source>
-      <Name>scripts\platInit1</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\scripts\platInit1.xnb</Output>
-      <Time>2010-01-25T22:44:30.1544863+03:00</Time>
     </Item>
     <Item>
       <Source>models\player.x</Source>
@@ -279,6 +292,13 @@
       <Output>obj\x86\Debug\models\ui_0.xml</Output>
       <Time>2010-01-11T15:02:27.234375+03:00</Time>
     </Item>
+    <Item>
+      <Source>models\plat..x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\models\plat._0.xml</Output>
+      <Time>2010-01-26T15:26:58.103+03:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -291,8 +311,8 @@
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>D:\IceTower\Platformator\Platformator\dlls\XNuaContentImporter.dll</Key>
-        <Value>2010-01-26T13:58:42.483+03:00</Value>
+        <Key>d:\IceTower\Platformator\Debug\XNuaContentImporter.dll</Key>
+        <Value>2010-01-26T22:09:51.7434654+03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Game\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Game.dll</Key>

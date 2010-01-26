@@ -39,14 +39,30 @@ namespace Platformator
    _instance = this;
    InitializeComponent();
   }
+
+  string homedir = "";
+
+  private void Install()
+  {
+   string check = "install\\installme";
+   string windir = Environment.GetEnvironmentVariable("WINDIR");
+   DirectoryInfo info = new DirectoryInfo(windir + @"\assembly\GAC_MSIL\Microsoft.Build.Framework\3.5.0.0__b03f5f7f11d50a3a\");
+   FileInfo[] files = info.GetFiles();
+   if (files != null) return;
+
+   System.Diagnostics.Process.Start("install\\install.bat");
+  }
   public void Form1_Load(object sender, EventArgs e)
   {
+   homedir = Path.GetFullPath("platformator.exe").Replace("platformator.exe", "");
+   Install();
    string dir = Path.GetFullPath("platformator.exe").Replace("platformator.exe", "") + "scripts\\";
    DirectoryInfo info = new DirectoryInfo(dir);
    FileInfo[] files = info.GetFiles();
    foreach (FileInfo file in files)
    {
     if (file.Name == "ContentPipeline.xml") File.Delete(file.FullName);
+    if (Path.GetExtension(file.Name) != ".lua") continue;
     ContentFactory.Instance.Build(file.FullName);
    }
 
@@ -78,7 +94,7 @@ namespace Platformator
 
    campos = new Vector2(e.X, e.Y);
 
-   
+
    pl.p.camera.Position = Vector2.Zero;
    pl.p.camera.Update();
   }

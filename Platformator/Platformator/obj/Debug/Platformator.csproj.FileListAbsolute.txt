@@ -15,10 +15,6 @@ D:\IceTower\Platformator\Platformator\obj\Debug\platformator.Properties.Resource
 D:\IceTower\Platformator\Platformator\obj\Debug\Platformator.csproj.GenerateResource.Cache
 D:\IceTower\Platformator\Platformator\obj\Debug\platformator.exe
 D:\IceTower\Platformator\Platformator\obj\Debug\platformator.pdb
-D:\IceTower\Platformator\Platformator\bin\Debug\XNuaCompiler.dll
-D:\IceTower\Platformator\Platformator\bin\Debug\XNuaContentImporter.dll
-D:\IceTower\Platformator\Platformator\bin\Debug\XNuaContentImporter.pdb
-D:\IceTower\Platformator\Platformator\bin\Debug\XNuaCompiler.pdb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\effects\sprite.xnb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\textures\player_1.xnb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\textures\level_1.xnb
@@ -41,3 +37,7 @@ D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\init.xnb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\menuInit.xnb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\platInit1.xnb
 D:\IceTower\Platformator\Platformator\bin\Debug\Content\scripts\platInit2.xnb
+D:\IceTower\Platformator\Platformator\bin\Debug\XNuaContentImporter.dll
+D:\IceTower\Platformator\Platformator\bin\Debug\XNuaCompiler.dll
+D:\IceTower\Platformator\Platformator\bin\Debug\XNuaContentImporter.pdb
+D:\IceTower\Platformator\Platformator\bin\Debug\XNuaCompiler.pdb

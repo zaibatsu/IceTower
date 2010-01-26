@@ -18,7 +18,7 @@ namespace DarkSide
   public GEOMTYPE geomType { get; set; }
   public List<OBJ_DESC> objDesc = new List<OBJ_DESC>();
   public string name = "none";
-
+   
   public Vector2 Position
   {
    set

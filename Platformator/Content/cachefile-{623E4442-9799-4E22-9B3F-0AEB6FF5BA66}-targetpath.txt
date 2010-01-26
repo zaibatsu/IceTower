@@ -12,11 +12,12 @@ Content\textures\settings.xnb
 Content\textures\menu.xnb
 Content\textures\cibylia.xnb
 Content\textures\none.xnb
+Content\textures\skeleton.xnb
 Content\models\player.xnb
 Content\models\level.xnb
 Content\models\background.xnb
 Content\models\oops.xnb
 Content\models\ui.xnb
+Content\models\plat.xnb
 Content\scripts\init.xnb
 Content\scripts\menuInit.xnb
-Content\scripts\platInit1.xnb

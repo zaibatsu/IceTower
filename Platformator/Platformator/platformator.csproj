@@ -61,22 +61,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="XnaDevRu.ContentBuilder.Framework, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\XnaDevRu.ContentBuilder.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="XNua, Version=0.0.1.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\XNua.dll</HintPath>
-    </Reference>
-    <Reference Include="XNuaCompiler, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\XNuaCompiler.dll</HintPath>
-    </Reference>
-    <Reference Include="XNuaContentImporter, Version=1.0.3678.25160, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\XNuaContentImporter.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Form1.cs">
@@ -138,10 +122,19 @@
       <Project>{C8EEC48A-8A40-47A5-9736-241945E28B24}</Project>
       <Name>DarkSide</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\XCB_Source\XnaDevRu.ContentBuilder.Framework\XnaDevRu.ContentBuilder.Framework.csproj">
+      <Project>{6EA3B8C6-6737-4320-8F22-B0BFF7876FC5}</Project>
+      <Name>XnaDevRu.ContentBuilder.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XNua01b\src01b\XNua\XNuaContentImporter\XNuaContentImporter\XNuaContentImporter.vcproj">
+      <Project>{9822C3E3-31A9-47A9-A520-7CD22F67852E}</Project>
+      <Name>XNuaContentImporter</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyIcon.ico" />
     <None Include="Resources\menu.jpg" />
+    <None Include="scripts\plat11.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
