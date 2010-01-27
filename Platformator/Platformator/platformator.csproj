@@ -134,7 +134,6 @@
   <ItemGroup>
     <Content Include="MyIcon.ico" />
     <None Include="Resources\menu.jpg" />
-    <None Include="scripts\plat11.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

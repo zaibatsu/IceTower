@@ -38,6 +38,7 @@ namespace Platformator
   {
    _instance = this;
    InitializeComponent();
+   ContentFactory abc = ContentFactory.Instance;
   }
 
   string homedir = "";
@@ -66,7 +67,7 @@ namespace Platformator
     ContentFactory.Instance.Build(file.FullName);
    }
 
-
+   this.Hide();
    InitForm initForm = new InitForm();
    initForm.ShowDialog(this);
    this.MouseWheel += gameControl_MouseMove_1;
@@ -78,6 +79,7 @@ namespace Platformator
   private void gameControl_MouseMove_1(object sender, MouseEventArgs e)
   {
    PLATFORMER pl = Game1.Instance.platformer;
+   if (pl == null) return;
 
    if (e.Delta != 0) pl.p.camera.Height -= 5 * pl.p.time.dt * e.Delta;
 

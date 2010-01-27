@@ -22,7 +22,7 @@ save_load.AnimCount =  Vector2(5, 3);
 
 
 settings = MESH2D()
-settings:Init(p, "vitek", "ui", wh, "all");
+settings:Init(p, "settings", "ui", wh, "all");
 settings.UIPosition =  Vector2(320, 60 + 120);
 settings.AnimCount =  Vector2(5, 3);
 

@@ -3,16 +3,13 @@ Content\textures\player_1.xnb
 Content\textures\level_1.xnb
 Content\textures\background_1.xnb
 Content\textures\oops_1.xnb
-Content\textures\barrel.xnb
-Content\textures\rope.xnb
 Content\textures\new_game.xnb
 Content\textures\quit.xnb
 Content\textures\save_load.xnb
 Content\textures\settings.xnb
 Content\textures\menu.xnb
-Content\textures\cibylia.xnb
-Content\textures\none.xnb
 Content\textures\skeleton.xnb
+Content\textures\none.xnb
 Content\models\player.xnb
 Content\models\level.xnb
 Content\models\background.xnb

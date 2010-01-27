@@ -34,9 +34,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
-    <Reference Include="XNuaContentImporter, Version=1.0.3678.25160, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="XNuaContentImporter, Version=1.0.3679.1809, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dlls\XNuaContentImporter.dll</HintPath>
+      <HintPath>..\XNuaContentImporter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,20 +98,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\barrel.tga">
-      <Name>barrel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="textures\rope.tga">
-      <Name>rope</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="textures\new_game.tga">
       <Name>new_game</Name>
       <Importer>TextureImporter</Importer>
@@ -147,34 +133,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="scripts\init.lua">
-      <Name>init</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="scripts\menuInit.lua">
-      <Name>menuInit</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="scripts\platInit1.lua">
-      <Name>platInit1</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="scripts\platInit2.lua">
-      <Name>platInit2</Name>
-      <Importer>XNuaContentImport</Importer>
-      <Processor>XNuaProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="textures\menu.jpg">
       <Name>menu</Name>
       <Importer>TextureImporter</Importer>
@@ -182,8 +140,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\ball.bmp">
-      <Name>ball</Name>
+    <Compile Include="scripts\init.lua">
+      <Name>init</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+    <Compile Include="scripts\menuInit.lua">
+      <Name>menuInit</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+    <Compile Include="scripts\platInit1.lua">
+      <Name>platInit1</Name>
+      <Importer>XNuaContentImport</Importer>
+      <Processor>XNuaProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\skeleton.tga">
+      <Name>skeleton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
